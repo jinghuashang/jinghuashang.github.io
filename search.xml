@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>Minecraft Server</title>
+      <link href="/2022/04/01/minecraft/"/>
+      <url>/2022/04/01/minecraft/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Minecraft-Server-搭建教程"><a href="#Minecraft-Server-搭建教程" class="headerlink" title="Minecraft Server 搭建教程"></a>Minecraft Server 搭建教程</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本教程是给新手服主指路，老手就不要来这里喷了<br>若需要转载本文章，请联系我</p><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>1.一颗有恒心的心，开服十分枯燥<br>2.有一台4G以上运行内存的电脑，笔记本、台式不限<br>3.计算机基本常识(网络、系统等)<br>4.英语基本功底（其实有翻译，汉化包也挺多的，不过技多不压身是吧）<br>5 .（可选）VPS（云）服务器</p><hr>]]></content>
+      
+      
+      <categories>
+          
+          <category> TCP </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MC </tag>
+            
+            <tag> 计算机 </tag>
+            
+            <tag> 网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>关于本站</title>
       <link href="/2022/02/14/my-new-post/"/>
       <url>/2022/02/14/my-new-post/</url>
