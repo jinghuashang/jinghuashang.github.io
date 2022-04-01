@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="关于本站, 悸-博客">
-    <meta name="description" content="呜呼，欢迎来的悸的小破站">
+    <meta name="keywords" content="Arch Liunx, 悸-博客">
+    <meta name="description" content="Arch Linux  最后更新于2022年2月25日1.Arch Linux &amp;amp; KDE 的安装及配置（以UEFI为例）——一、验证引导模式 &amp;amp; 联网 &amp;amp; 换源：$ ls /sys/firmware/efi/efi">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>关于本站 | 悸-博客</title>
+    <title>Arch Liunx | 悸-博客</title>
     <link rel="icon" type="image/jpeg" href="https://cdn.jsdelivr.net/gh/jinghuashang/jinghuashang.github.io/favicon.jpg">
 
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/gh/jinghuashang/jinghuashang.github.io/libs/awesome/css/all.min.css">
@@ -293,7 +293,7 @@
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">关于本站</h1>
+                    <h1 class="description center-align post-title">Arch Liunx</h1>
                 </div>
             </div>
         </div>
@@ -407,9 +407,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">
+                                <span class="chip bg-color">计算机</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -421,7 +425,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-02-14
+                    2022-04-01
                 </div>
                 
 
@@ -435,14 +439,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    69
+                    2.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    10 分
                 </div>
                 
 
@@ -462,9 +466,315 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h2 id="本站简介"><a href="#本站简介" class="headerlink" title="本站简介"></a>本站简介</h2><p>enm….<br>其实吧，也没啥简介的，就是一个咸鱼高中生的博客<br>平常没事分享分享好玩的，嘿嘿<br>不过作为一个arch教徒，咱也宣传宣传arch<br>对了，咱是个粥游人，官服Dr.悸#4104</p>
-<h2 id="END"><a href="#END" class="headerlink" title="END"></a>END</h2><hr>
+                <h1 id="Arch-Linux-最后更新于2022年2月25日"><a href="#Arch-Linux-最后更新于2022年2月25日" class="headerlink" title="Arch Linux  最后更新于2022年2月25日"></a>Arch Linux  最后更新于2022年2月25日</h1><h2 id="1-Arch-Linux-amp-KDE-的安装及配置（以UEFI为例）——"><a href="#1-Arch-Linux-amp-KDE-的安装及配置（以UEFI为例）——" class="headerlink" title="1.Arch Linux &amp; KDE 的安装及配置（以UEFI为例）——"></a>1.Arch Linux &amp; KDE 的安装及配置（以UEFI为例）——</h2><h4 id="一、验证引导模式-amp-联网-amp-换源："><a href="#一、验证引导模式-amp-联网-amp-换源：" class="headerlink" title="一、验证引导模式 &amp; 联网 &amp; 换源："></a>一、验证引导模式 &amp; 联网 &amp; 换源：</h4><pre class=" language-bash"><code class="language-bash">$ <span class="token function">ls</span> /sys/firmware/efi/efivars
+<span class="token comment" spellcheck="true">#验证引导模式（如果不报错，即为UEFI引导模式；如果报错请不要使用本教程）</span>
 
+$ iwctl
+<span class="token comment" spellcheck="true">#运行iwctl(如果是台式机，可直接跳到"ping archlinux.org"这一步)</span>
+<span class="token punctuation">[</span>iwctl<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># device list</span>
+<span class="token comment" spellcheck="true">#列出WiFi设备（一般为wlan0；这里以wlan0为例）</span>
+<span class="token punctuation">[</span>iwctl<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># station wlan0 scan</span>
+<span class="token comment" spellcheck="true">#扫描网络</span>
+<span class="token punctuation">[</span>iwctl<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># station wlan0 get-networks</span>
+<span class="token comment" spellcheck="true">#列出可用网络</span>
+<span class="token punctuation">[</span>iwctl<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># station wlan0 connect X</span>
+<span class="token comment" spellcheck="true">#连接到X（X改成你可用的WiFi名称）</span>
+<span class="token punctuation">[</span>iwctl<span class="token punctuation">]</span><span class="token comment" spellcheck="true"># exit</span>
+<span class="token comment" spellcheck="true">#退出iwctl</span>
+
+$ <span class="token function">ping</span> archlinux.org
+<span class="token comment" spellcheck="true">#检查网络连接（如果不停的有输出内容，即为联网成功；按Ctrl+C终止输出）</span>
+
+$ reflector --country China --save /etc/pacman.d/mirrorlist
+<span class="token comment" spellcheck="true">#换源（注意大小写）</span>
+
+$ systemctl stop reflector
+<span class="token comment" spellcheck="true">#关闭reflector服务</span>
+
+$ vim /etc/pacman.d/mirrorlist
+<span class="token comment" spellcheck="true">#编辑/etc/pacman.d/mirrorlist文件，保留自己需要的源（一般推荐使用中科大源或清华源）</span>
+
+$ timedatectl set-ntp <span class="token boolean">true</span>
+<span class="token comment" spellcheck="true">#同步时间</span>
+
+$ timedatectl status
+<span class="token comment" spellcheck="true">#检查服务状态</span>
+
+$ pacman -Syy
+<span class="token comment" spellcheck="true">#同步数据</span>
+</code></pre>
+<h4 id="二、分区-amp-挂载："><a href="#二、分区-amp-挂载：" class="headerlink" title="二、分区 &amp; 挂载："></a>二、分区 &amp; 挂载：</h4><pre class=" language-bash"><code class="language-bash">$ lsblk
+<span class="token comment" spellcheck="true">#查看硬盘名称（一般为sda或nvme0n1；其中rom，loop或airoot可以忽略；这里以nvme0n1为例）</span>
+
+$ gdisk /dev/nvme0n1
+<span class="token comment" spellcheck="true">#使用gdisk对nvme0n1进行相关操作</span>
+<span class="token comment" spellcheck="true">#步骤如下：</span>
+Conmmand <span class="token punctuation">(</span>? <span class="token keyword">for</span> help<span class="token punctuation">)</span>: x <span class="token comment" spellcheck="true">#输入x进入高级选项</span>
+Expert <span class="token function">command</span> <span class="token punctuation">(</span>? <span class="token keyword">for</span> help<span class="token punctuation">)</span>: z <span class="token comment" spellcheck="true">#输入z删除所有分区</span>
+About to wipe out GPT on /dev/nvme0n1. Proceed? <span class="token punctuation">(</span>Y/N<span class="token punctuation">)</span>: Y <span class="token comment" spellcheck="true">#输入Y确定删除</span>
+Blank out MBR? <span class="token punctuation">(</span>Y/N<span class="token punctuation">)</span>: Y <span class="token comment" spellcheck="true">#输入Y清空MBR</span>
+
+$ gdisk /dev/nvme0n1
+<span class="token comment" spellcheck="true">#再次使用gdisk对nvme0n1进行相关操作</span>
+<span class="token comment" spellcheck="true">#步骤如下：</span>
+Conmmand <span class="token punctuation">(</span>? <span class="token keyword">for</span> help<span class="token punctuation">)</span>: n <span class="token comment" spellcheck="true">#输入n创建新分区</span>
+Partition number <span class="token punctuation">(</span>1-128, default 1<span class="token punctuation">)</span>: <span class="token comment" spellcheck="true">#这里按Enter键</span>
+First sector <span class="token punctuation">(</span>34-X, default <span class="token operator">=</span> 2048<span class="token punctuation">)</span> or <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;+-&amp;#125;size&amp;#123;KMGTP&amp;#125;: #这里按Enter键</span>
+Last sector <span class="token punctuation">(</span>2048-X, default <span class="token operator">=</span> X<span class="token punctuation">)</span> or <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;+-&amp;#125;size&amp;#123;KMGTP&amp;#125;: +512M #输入+512M</span>
+Hex code or GUID <span class="token punctuation">(</span>L to show codees, Enter <span class="token operator">=</span> 8300<span class="token punctuation">)</span>: ef00 <span class="token comment" spellcheck="true">#输入ef00，创建efi分区（不推荐过大或过小，一般512MB即可）</span>
+Conmmand <span class="token punctuation">(</span>? <span class="token keyword">for</span> help<span class="token punctuation">)</span>: n <span class="token comment" spellcheck="true">#输入n创建新分区</span>
+Partition number <span class="token punctuation">(</span>2-128, default 2<span class="token punctuation">)</span>: <span class="token comment" spellcheck="true">#这里按Enter键</span>
+First sector <span class="token punctuation">(</span>34-X, default <span class="token operator">=</span> 1050624<span class="token punctuation">)</span> or <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;+-&amp;#125;size&amp;#123;KMGTP&amp;#125;: #这里按Enter键</span>
+Last sector <span class="token punctuation">(</span>1050624-X, default <span class="token operator">=</span> X<span class="token punctuation">)</span> or <span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;+-&amp;#125;size&amp;#123;KMGTP&amp;#125;: +10G #输入+10G</span>
+Hex code or GUID <span class="token punctuation">(</span>L to show codees, Enter <span class="token operator">=</span> 8300<span class="token punctuation">)</span>: 8200 <span class="token comment" spellcheck="true">#输入8200，创建swap分区（大小根据电脑内存及自身使用情况而定，一般10GB即可）</span>
+Conmmand <span class="token punctuation">(</span>? <span class="token keyword">for</span> help<span class="token punctuation">)</span>: n <span class="token comment" spellcheck="true">#输入n创建新分区，然后一直按Enter键，把剩下的空间全部分配给/分区</span>
+Conmmand <span class="token punctuation">(</span>? <span class="token keyword">for</span> help<span class="token punctuation">)</span>: w <span class="token comment" spellcheck="true">#输入w写入</span>
+Do you want to proceed? <span class="token punctuation">(</span>Y/N<span class="token punctuation">)</span>: Y <span class="token comment" spellcheck="true">#输入Y确定写入</span>
+
+$ lsblk
+<span class="token comment" spellcheck="true">#查看分区结构是否正确</span>
+
+$ mkfs.vfat /dev/nvme0n1p1
+<span class="token comment" spellcheck="true">#将nvme0n1p1格式化为vfat（设置为FAT32格式）</span>
+
+$ mkfs.xfs /dev/nvme0n1p3
+<span class="token comment" spellcheck="true">#将nvme0n1p3格式化为xfs（个人习惯使用xfs，可根据自己使用情况选择文件系统，如btrfs或ext4等均可）</span>
+
+$ mkswap /dev/nvme0n1p2
+<span class="token comment" spellcheck="true">#将nvme0n1p2设置为swap</span>
+
+$ <span class="token function">mount</span> /dev/nvme0n1p3 /mnt
+<span class="token comment" spellcheck="true">#将nvme0n1p3挂载到/mnt目录</span>
+
+$ <span class="token function">mkdir</span> -p /mnt/boot/efi
+<span class="token comment" spellcheck="true">#创建/mnt/boot/efi目录</span>
+
+$ <span class="token function">mount</span> /dev/nvme0n1p1 /mnt/boot/efi
+<span class="token comment" spellcheck="true">#将nvme0n1p1挂载到/mnt/boot/efi目录</span>
+
+$ swapon /dev/nvme0n1p2
+<span class="token comment" spellcheck="true">#激活nvme0n1p2为交换分区</span>
+
+$ lsblk -f
+<span class="token comment" spellcheck="true">#查看相应分区的文件系统及挂载是否正确</span>
+</code></pre>
+<p>在pacstrap之前，请再检查一下&#x2F;etc&#x2F;pacman.d&#x2F;mirrorlist文件。</p>
+<h4 id="三、安装基本的包-amp-初步配置："><a href="#三、安装基本的包-amp-初步配置：" class="headerlink" title="三、安装基本的包 &amp; 初步配置："></a>三、安装基本的包 &amp; 初步配置：</h4><pre class=" language-bash"><code class="language-bash">$ pacstrap /mnt linux linux-firmware linux-headers base base-devel vim bash-completion iwd dhcpcd
+<span class="token comment" spellcheck="true">#安装linux &amp; linux-firmware &amp; linux-headers &amp; base &amp; base-devel &amp; vim &amp; bash-completion &amp; iwd &amp; dhcpcd</span>
+
+$ genfstab -U /mnt <span class="token operator">>></span> /mnt/etc/fstab
+<span class="token comment" spellcheck="true">#生成/mnt/etc/fstab文件（注意大小写）</span>
+
+$ <span class="token function">cat</span> /mnt/etc/fstab
+<span class="token comment" spellcheck="true">#查看/mnt/etc/fstab文件是否正确（如果不正确，请重新分区、挂载、pacstrap）</span>
+
+$ arch-chroot /mnt
+<span class="token comment" spellcheck="true">#进入目标系统</span>
+
+$ pacman -Syy
+<span class="token comment" spellcheck="true">#同步数据</span>
+
+$ pacman -S grub efibootmgr efivar networkmanager amd-ucode intel-ucode
+<span class="token comment" spellcheck="true">#安装grub &amp; efibootmgr &amp; efivar &amp; networkmanager &amp; amd-ucode或intel-ucode（AMD的CPU安装amd-ucode，intel的CPU安装intel-ucode）</span>
+
+$ grub-install /dev/nvme0n1
+<span class="token comment" spellcheck="true">#将grub写入nvme0n1</span>
+
+$ grub-mkconfig -o /boot/grub/grub.cfg
+<span class="token comment" spellcheck="true">#生成/boot/grub/grub.cfg文件</span>
+
+$ systemctl <span class="token function">enable</span> iwd
+<span class="token comment" spellcheck="true">#开机自启iwd服务</span>
+
+$ systemctl <span class="token function">enable</span> dhcpcd
+<span class="token comment" spellcheck="true">#开机自启dhcpcd服务</span>
+
+$ <span class="token function">passwd</span> root
+<span class="token comment" spellcheck="true">#设置root密码</span>
+</code></pre>
+<p>如果你打算将系统安装进U盘即插即用，推荐amd-ucode和intel-ucode都安装。</p>
+<h4 id="四、退出目标系统："><a href="#四、退出目标系统：" class="headerlink" title="四、退出目标系统："></a>四、退出目标系统：</h4><pre class=" language-bash"><code class="language-bash">$ <span class="token keyword">exit</span>
+<span class="token comment" spellcheck="true">#退出目标系统</span>
+
+$ <span class="token function">umount</span> /mnt/boot/efi
+<span class="token comment" spellcheck="true">#卸载/mnt/boot/efi目录</span>
+
+$ <span class="token function">umount</span> /mnt
+<span class="token comment" spellcheck="true">#卸载/mnt目录</span>
+
+$ <span class="token function">reboot</span>
+<span class="token comment" spellcheck="true">#重启并登陆root</span>
+</code></pre>
+<h4 id="五、系统配置："><a href="#五、系统配置：" class="headerlink" title="五、系统配置："></a>五、系统配置：</h4><pre class=" language-bash"><code class="language-bash">$ iwctl
+<span class="token comment" spellcheck="true">#运行iwctl（使用方法请参考第一阶段的联网部分；台式机可跳过）</span>
+
+$ <span class="token function">ping</span> archlinux.org
+<span class="token comment" spellcheck="true">#检查网络连接（如果不停的有输出内容，即为联网成功；按Ctrl+C终止输出）</span>
+
+$ vim /etc/hostname
+<span class="token comment" spellcheck="true">#创建/etc/hostname文件，加入以下内容:</span>
+archlinux
+<span class="token comment" spellcheck="true">#将主机名设置为archlinux</span>
+
+$ vim /etc/hosts
+<span class="token comment" spellcheck="true">#编辑/etc/hosts文件，在末尾加入以下内容（中间用tab键而非空格；其实tab键和空格都可以，但不能混合使用）：</span>
+127.0.0.1   localhost
+::1         localhost
+127.0.1.1   archlinux.localdomain   archlinux
+<span class="token comment" spellcheck="true">#配置hosts文件，映射IP地址和主机名</span>
+
+$ timedatectl set-timezone Asia/Shanghai
+<span class="token comment" spellcheck="true">#设置时区为上海（注意大小写）</span>
+
+$ timedatectl set-ntp <span class="token boolean">true</span>
+<span class="token comment" spellcheck="true">#同步时间</span>
+
+$ timedatectl status
+<span class="token comment" spellcheck="true">#检查服务状态</span>
+
+$ vim /etc/skel/.bashrc
+<span class="token comment" spellcheck="true">#编辑/etc/skel/.bashrc文件，在开头加入以下内容：</span>
+<span class="token function">export</span> EDITOR<span class="token operator">=</span><span class="token string">'vim'</span>
+<span class="token comment" spellcheck="true">#设置vim为默认文本编辑器（注意大小写）</span>
+
+$ <span class="token function">cd</span> /etc/skel
+<span class="token comment" spellcheck="true">#切换到/etc/skel目录</span>
+
+$ <span class="token function">cp</span> -a <span class="token keyword">.</span> ~
+<span class="token comment" spellcheck="true">#复制/etc/skel/.bashrc文件到主目录</span>
+
+$ <span class="token function">reboot</span>
+<span class="token comment" spellcheck="true">#重启并登陆root</span>
+
+$ <span class="token function">useradd</span> --create-home arch
+<span class="token comment" spellcheck="true">#添加普通用户，用户名为arch</span>
+
+$ <span class="token function">passwd</span> arch
+<span class="token comment" spellcheck="true">#设置arch密码</span>
+
+$ <span class="token function">usermod</span> -aG adm,wheel,storage arch
+<span class="token comment" spellcheck="true">#将arch添加到相应的组中</span>
+
+$ <span class="token function">id</span> arch
+<span class="token comment" spellcheck="true">#查看用户组是否添加到相应的组中</span>
+
+$ visudo
+<span class="token comment" spellcheck="true">#设置用户权限，删除%wheel ALL=(ALL:ALL) ALL前面的#</span>
+
+$ <span class="token function">reboot</span>
+<span class="token comment" spellcheck="true">#重启并登陆root</span>
+
+$ vim /etc/locale.gen
+<span class="token comment" spellcheck="true">#编辑/etc/locale.gen文件,删除en_US.UTF-8 UTF-8和zh_CN.UTF-8 UTF-8前面的#</span>
+
+$ locale-gen
+<span class="token comment" spellcheck="true">#生成语言</span>
+
+$ vim /etc/locale.conf
+<span class="token comment" spellcheck="true">#创建/etc/locale.conf文件，加入以下内容：</span>
+LANG<span class="token operator">=</span>en_US.UTF-8
+<span class="token comment" spellcheck="true">#设置语言为en_US.UTF-8（注意大小写）</span>
+
+$ <span class="token function">reboot</span>
+<span class="token comment" spellcheck="true">#重启并登陆root</span>
+
+$ vim /etc/pacman.conf
+<span class="token comment" spellcheck="true">#编辑/etc/pacman.conf文件，删除[multilib]区域的所有#（开启32位支持）并在末尾加入以下内容：</span>
+<span class="token punctuation">[</span>archlinuxcn<span class="token punctuation">]</span>
+Server <span class="token operator">=</span> https://mirrors.ustc.edu.cn/archlinuxcn/<span class="token variable">$arch</span>
+<span class="token comment" spellcheck="true">#添加archlinuxcn源（一般推荐使用中科大源；除了可以添加archlinuxcn源外，还可以添加arch4edu源、blackarch源以及各种私人源，添加方法不再赘述；注意大小写）</span>
+
+$ pacman -Syy
+<span class="token comment" spellcheck="true">#同步数据</span>
+
+$ pacman -S archlinuxcn-keyring
+<span class="token comment" spellcheck="true">#安装archlinuxcn-keyring</span>
+
+$ <span class="token function">rm</span> -rf /etc/pacman.d/gnupg <span class="token operator">&amp;&amp;</span> pacman-key --init <span class="token operator">&amp;&amp;</span> pacman-key --populate archlinux <span class="token operator">&amp;&amp;</span> pacman-key --populate archlinuxcn
+<span class="token comment" spellcheck="true">#生成新的密钥环并重新签署密钥（安装archlinuxcn-keyring不报错时可跳过）</span>
+
+$ pacman -Syy
+<span class="token comment" spellcheck="true">#再次同步数据</span>
+
+$ pacman -S mesa lib32-mesa xf86-video-amdgpu vulkan-radeon lib32-vulkan-radeon libva-mesa-driver lib32-libva-mesa-driver mesa-vdpau lib32-mesa-vdpau xf86-video-ati
+<span class="token comment" spellcheck="true">#安装AMD核显相关驱动</span>
+
+$ pacman -S mesa lib32-mesa xf86-video-intel vulkan-intel lib32-vulkan-intel
+<span class="token comment" spellcheck="true">#安装intel核显相关驱动</span>
+
+$ pacman -S alsa-utils alsa-plugins alsa-oss alsa-firmware sof-firmware alsa-ucm-conf pulseaudio pulseaudio-alsa pulseaudio-bluetooth
+<span class="token comment" spellcheck="true">#安装声音相关驱动</span>
+
+$ systemctl <span class="token function">enable</span> bluetooth
+<span class="token comment" spellcheck="true">#开机自启bluetooth服务</span>
+
+$ <span class="token function">reboot</span>
+<span class="token comment" spellcheck="true">#重启并登陆root</span>
+</code></pre>
+<p>如果你打算将系统安装进U盘即插即用，推荐AMD核显和intel核显都安装。</p>
+<p><del>So,Nvidia:FuckYou!</del></p>
+<h4 id="六、安装桌面环境："><a href="#六、安装桌面环境：" class="headerlink" title="六、安装桌面环境："></a>六、安装桌面环境：</h4><pre class=" language-bash"><code class="language-bash">$ pacman -Syy
+<span class="token comment" spellcheck="true">#同步数据</span>
+
+$ pacman -S ttf-dejavu ttf-liberation noto-fonts noto-fonts-cjk noto-fonts-emoji noto-fonts-emoji-blob noto-fonts-extra adobe-source-han-sans-otc-fonts adobe-source-han-serif-otc-fonts wqy-bitmapfont wqy-microhei wqy-microhei-lite wqy-zenhei
+<span class="token comment" spellcheck="true">#安装字体（请根据需要自行补充，这里只安装常用的包）</span>
+
+$ pacman -S plasma plasma-meta konsole dolphin packagekit-qt5
+<span class="token comment" spellcheck="true">#安装KDE桌面（这里只安装最必要的包，如果想完整使用KDE的各种功能请根据对应提示安装需要的包）</span>
+
+$ systemctl <span class="token function">enable</span> sddm
+<span class="token comment" spellcheck="true">#开机自启sddm服务</span>
+
+$ systemctl disable iwd
+<span class="token comment" spellcheck="true">#取消自启iwd服务</span>
+
+$ systemctl <span class="token function">enable</span> NetworkManager
+<span class="token comment" spellcheck="true">#开机自启NetworkManager服务（注意大小写）</span>
+
+$ <span class="token function">reboot</span>
+<span class="token comment" spellcheck="true">#重启</span>
+</code></pre>
+<h2 id="2-桌面中文环境的设置-amp-输入法的安装及配置——"><a href="#2-桌面中文环境的设置-amp-输入法的安装及配置——" class="headerlink" title="2.桌面中文环境的设置 &amp; 输入法的安装及配置——"></a>2.桌面中文环境的设置 &amp; 输入法的安装及配置——</h2><h4 id="一、中文环境的设置："><a href="#一、中文环境的设置：" class="headerlink" title="一、中文环境的设置："></a>一、中文环境的设置：</h4><p>System Settings（系统设置）&gt;&gt;Regional Settings（区域设置）&gt;&gt;Language（语言）&gt;&gt;Add language（添加语言），找到<strong>简体中文</strong>后点Add（添加）。添加简体中文后，将其移到最上方，并删除其他多余语言，否则会出现汉化不全的情况。上述操作完成后，点击Apply（应用）。</p>
+<p>System Settings（系统设置）&gt;&gt;Regional Settings（区域设置）&gt;&gt;Formats（格式）&gt;&gt;Region（区域），选择<strong>简体中文（中国）</strong>。上述操作完成后，点击Apply（应用）。</p>
+<pre class=" language-bash"><code class="language-bash">$ <span class="token function">reboot</span>
+<span class="token comment" spellcheck="true">#重启</span>
+</code></pre>
+<h4 id="二、Fcitx-5-输入法的安装："><a href="#二、Fcitx-5-输入法的安装：" class="headerlink" title="二、Fcitx 5 输入法的安装："></a>二、Fcitx 5 输入法的安装：</h4><pre class=" language-bash"><code class="language-bash">$ <span class="token function">sudo</span> pacman -S fcitx5-im fcitx5-chinese-addons fcitx5-qt fcitx5-gtk
+<span class="token comment" spellcheck="true">#安装 Fcitx5主体、配置工具、输入法引擎及中文输入法模块</span>
+
+$ <span class="token function">sudo</span> vim /etc/environment
+<span class="token comment" spellcheck="true">#编辑/etc/environment文件，在末尾加入以下内容：</span>
+GTK_IM_MODULE<span class="token operator">=</span>fcitx
+QT_IM_MODULE<span class="token operator">=</span>fcitx
+XMODIFIERS<span class="token operator">=</span>@im<span class="token operator">=</span>fcitx
+<span class="token comment" spellcheck="true">#配置环境变量（注意大小写）</span>
+
+$ <span class="token function">sudo</span> pacman -S fcitx5-pinyin-zhwiki
+<span class="token comment" spellcheck="true">#安装中文维基百科词库</span>
+
+$ <span class="token function">sudo</span> pacman -S fcitx5-pinyin-moegirl
+<span class="token comment" spellcheck="true">#安装萌娘百科词库</span>
+
+$ <span class="token function">reboot</span>
+<span class="token comment" spellcheck="true">#重启</span>
+</code></pre>
+<h2 id="3-其他——"><a href="#3-其他——" class="headerlink" title="3.其他——"></a>3.其他——</h2><h4 id="一、AUR-helpers-的安装："><a href="#一、AUR-helpers-的安装：" class="headerlink" title="一、AUR helpers 的安装："></a>一、AUR helpers 的安装：</h4><pre class=" language-bash"><code class="language-bash">$ <span class="token function">sudo</span> pacman -S yay
+<span class="token comment" spellcheck="true">#安装yay</span>
+
+$ <span class="token function">sudo</span> pacman -S paru
+<span class="token comment" spellcheck="true">#安装paru</span>
+
+$ <span class="token function">sudo</span> vim /etc/paru.conf
+<span class="token comment" spellcheck="true">#编辑/etc/paru.conf文件，删除BottomUp前面的#</span>
+</code></pre>
+<p>二选一即可，使用方法不再赘述。</p>
+<h4 id="二、系统的更新："><a href="#二、系统的更新：" class="headerlink" title="二、系统的更新："></a>二、系统的更新：</h4><pre class=" language-bash"><code class="language-bash">$ <span class="token function">sudo</span> pacman -Syu
+<span class="token comment" spellcheck="true">#更新系统</span>
+
+$ yay
+<span class="token comment" spellcheck="true">#更新系统及AUR软件（paru亦可）</span>
+</code></pre>
+<h1 id="END"><a href="#END" class="headerlink" title="END"></a>END</h1>
                 
             </div>
             <hr/>
@@ -490,7 +800,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://jinghuashang.cn/2022/02/14/my-new-post/">http://jinghuashang.cn/2022/02/14/my-new-post/</a>
+                    <a href="http://jinghuashang.cn/2022/04/01/arch-linux/">http://jinghuashang.cn/2022/04/01/arch-linux/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -527,7 +837,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">
+                                    <span class="chip bg-color">计算机</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -570,7 +884,7 @@
         repo: 'gitalk',
         owner: 'jinghuashang',
         admin: "jinghuashang",
-        id: '2022-02-14T22-36-22',
+        id: '2022-04-01T14-34-59',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -600,9 +914,56 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/04/01/arch-linux/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="https://cdn.jsdelivr.net/gh/jinghuashang/jinghuashang.github.io/medias/featureimages/8.jpg" class="responsive-img" alt="Arch Liunx">
+                        
+                        <span class="card-title">Arch Liunx</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-01
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Mirage_BlackBerry
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/">
+                        <span class="chip bg-color">计算机</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022/04/01/minecraft/">
                     <div class="card-image">
@@ -619,9 +980,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-04-01
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-01
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -650,44 +1011,6 @@
                     </a>
                     
                 </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/02/14/my-new-post/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="https://cdn.jsdelivr.net/gh/jinghuashang/jinghuashang.github.io/medias/featureimages/8.jpg" class="responsive-img" alt="关于本站">
-                        
-                        <span class="card-title">关于本站</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            呜呼，欢迎来的悸的小破站
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-02-14
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Mirage_BlackBerry
-                            
-                        </span>
-                    </div>
-                </div>
-
                 
             </div>
         </div>

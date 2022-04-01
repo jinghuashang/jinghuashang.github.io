@@ -6,7 +6,7 @@
   <link href="http://jinghuashang.cn/atom.xml" rel="self"/>
   
   <link href="http://jinghuashang.cn/"/>
-  <updated>2022-04-01T04:33:32.526Z</updated>
+  <updated>2022-04-01T06:37:16.127Z</updated>
   <id>http://jinghuashang.cn/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Arch Liunx</title>
+    <link href="http://jinghuashang.cn/2022/04/01/arch-linux/"/>
+    <id>http://jinghuashang.cn/2022/04/01/arch-linux/</id>
+    <published>2022-04-01T06:34:59.000Z</published>
+    <updated>2022-04-01T06:37:16.127Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Arch-Linux-最后更新于2022年2月25日&quot;&gt;&lt;a href=&quot;#Arch-Linux-最后更新于2022年2月25日&quot; class=&quot;headerlink&quot; title=&quot;Arch Linux  最后更新于2022年2月25日&quot;&gt;&lt;/a&gt;Arch</summary>
+        
+      
+    
+    
+    
+    
+    <category term="计算机" scheme="http://jinghuashang.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>Minecraft Server</title>
@@ -37,9 +60,9 @@
     <category term="TCP" scheme="http://jinghuashang.cn/categories/TCP/"/>
     
     
-    <category term="MC" scheme="http://jinghuashang.cn/tags/MC/"/>
-    
     <category term="计算机" scheme="http://jinghuashang.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="MC" scheme="http://jinghuashang.cn/tags/MC/"/>
     
     <category term="网络" scheme="http://jinghuashang.cn/tags/%E7%BD%91%E7%BB%9C/"/>
     
