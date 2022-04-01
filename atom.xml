@@ -3,11 +3,11 @@
   <title>悸-博客</title>
   
   <subtitle>悸的小破站</subtitle>
-  <link href="http://jinghuashang.github.io/atom.xml" rel="self"/>
+  <link href="http://jinghuashang.cn/atom.xml" rel="self"/>
   
-  <link href="http://jinghuashang.github.io/"/>
+  <link href="http://jinghuashang.cn/"/>
   <updated>2022-04-01T04:33:32.526Z</updated>
-  <id>http://jinghuashang.github.io/</id>
+  <id>http://jinghuashang.cn/</id>
   
   <author>
     <name>Mirage_BlackBerry</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>Minecraft Server</title>
-    <link href="http://jinghuashang.github.io/2022/04/01/minecraft/"/>
-    <id>http://jinghuashang.github.io/2022/04/01/minecraft/</id>
+    <link href="http://jinghuashang.cn/2022/04/01/minecraft/"/>
+    <id>http://jinghuashang.cn/2022/04/01/minecraft/</id>
     <published>2022-04-01T03:28:57.000Z</published>
     <updated>2022-04-01T04:33:32.526Z</updated>
     
@@ -34,21 +34,21 @@
     
     
     
-    <category term="TCP" scheme="http://jinghuashang.github.io/categories/TCP/"/>
+    <category term="TCP" scheme="http://jinghuashang.cn/categories/TCP/"/>
     
     
-    <category term="MC" scheme="http://jinghuashang.github.io/tags/MC/"/>
+    <category term="MC" scheme="http://jinghuashang.cn/tags/MC/"/>
     
-    <category term="计算机" scheme="http://jinghuashang.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    <category term="计算机" scheme="http://jinghuashang.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
     
-    <category term="网络" scheme="http://jinghuashang.github.io/tags/%E7%BD%91%E7%BB%9C/"/>
+    <category term="网络" scheme="http://jinghuashang.cn/tags/%E7%BD%91%E7%BB%9C/"/>
     
   </entry>
   
   <entry>
     <title>关于本站</title>
-    <link href="http://jinghuashang.github.io/2022/02/14/my-new-post/"/>
-    <id>http://jinghuashang.github.io/2022/02/14/my-new-post/</id>
+    <link href="http://jinghuashang.cn/2022/02/14/my-new-post/"/>
+    <id>http://jinghuashang.cn/2022/02/14/my-new-post/</id>
     <published>2022-02-14T14:36:22.000Z</published>
     <updated>2022-04-01T03:22:50.180Z</updated>
     
