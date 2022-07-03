@@ -6,7 +6,7 @@
   <link href="http://jinghuashang.cn/atom.xml" rel="self"/>
   
   <link href="http://jinghuashang.cn/"/>
-  <updated>2022-04-01T04:33:32.526Z</updated>
+  <updated>2022-07-03T06:09:21.560Z</updated>
   <id>http://jinghuashang.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://jinghuashang.cn/2022/04/01/minecraft/"/>
     <id>http://jinghuashang.cn/2022/04/01/minecraft/</id>
     <published>2022-04-01T03:28:57.000Z</published>
-    <updated>2022-04-01T04:33:32.526Z</updated>
+    <updated>2022-07-03T06:09:21.560Z</updated>
     
     
       
@@ -46,40 +46,11 @@
   </entry>
   
   <entry>
-    <title>Arch Liunx (Legacy BIOS)</title>
-    <link href="http://jinghuashang.cn/2022/02/25/arch-liunx-legacy-bios/"/>
-    <id>http://jinghuashang.cn/2022/02/25/arch-liunx-legacy-bios/</id>
-    <published>2022-02-25T06:34:59.000Z</published>
-    <updated>2022-05-01T09:34:00.169Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Arch-Linux安装教程-（以Legacy-BIOS为例）-最后更新于2022年4月30日&quot;&gt;&lt;a href=&quot;#Arch-Linux安装教程-（以Legacy-BIOS为例）-最后更新于2022年4月30日&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="Linux 系统" scheme="http://jinghuashang.cn/categories/Linux-%E7%B3%BB%E7%BB%9F/"/>
-    
-    
-    <category term="计算机" scheme="http://jinghuashang.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-    <category term="Arch Linux" scheme="http://jinghuashang.cn/tags/Arch-Linux/"/>
-    
-    <category term="系统" scheme="http://jinghuashang.cn/tags/%E7%B3%BB%E7%BB%9F/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Arch Liunx (UEFI)</title>
     <link href="http://jinghuashang.cn/2022/02/25/arch-liunx-uefi/"/>
     <id>http://jinghuashang.cn/2022/02/25/arch-liunx-uefi/</id>
     <published>2022-02-25T06:34:59.000Z</published>
-    <updated>2022-05-01T09:30:18.213Z</updated>
+    <updated>2022-07-03T06:09:21.580Z</updated>
     
     
       
@@ -104,11 +75,40 @@
   </entry>
   
   <entry>
+    <title>Arch Liunx (Legacy BIOS)</title>
+    <link href="http://jinghuashang.cn/2022/02/25/arch-liunx-legacy-bios/"/>
+    <id>http://jinghuashang.cn/2022/02/25/arch-liunx-legacy-bios/</id>
+    <published>2022-02-25T06:34:59.000Z</published>
+    <updated>2022-07-03T06:09:21.600Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Arch-Linux安装教程-（以Legacy-BIOS为例）-最后更新于2022年4月30日&quot;&gt;&lt;a href=&quot;#Arch-Linux安装教程-（以Legacy-BIOS为例）-最后更新于2022年4月30日&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="Linux 系统" scheme="http://jinghuashang.cn/categories/Linux-%E7%B3%BB%E7%BB%9F/"/>
+    
+    
+    <category term="计算机" scheme="http://jinghuashang.cn/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+    <category term="Arch Linux" scheme="http://jinghuashang.cn/tags/Arch-Linux/"/>
+    
+    <category term="系统" scheme="http://jinghuashang.cn/tags/%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
+  
+  <entry>
     <title>关于本站</title>
     <link href="http://jinghuashang.cn/2022/02/14/my-new-post/"/>
     <id>http://jinghuashang.cn/2022/02/14/my-new-post/</id>
     <published>2022-02-14T14:36:22.000Z</published>
-    <updated>2022-04-01T03:22:50.180Z</updated>
+    <updated>2022-07-03T06:09:21.590Z</updated>
     
     
       
@@ -129,7 +129,7 @@
     <link href="http://jinghuashang.cn/2021/08/27/arknights/"/>
     <id>http://jinghuashang.cn/2021/08/27/arknights/</id>
     <published>2021-08-27T13:27:45.000Z</published>
-    <updated>2022-04-02T10:04:00.797Z</updated>
+    <updated>2022-07-03T06:09:21.570Z</updated>
     
     
       
