@@ -30,7 +30,9 @@
 
     <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
 
-<meta name="generator" content="Hexo 6.0.0"><link rel="alternate" href="/atom.xml" title="悸-博客" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.0.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="悸-博客" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head>
 
 
@@ -546,7 +548,7 @@ Command <span class="token punctuation">(</span>m <span class="token keyword">fo
 Select <span class="token punctuation">(</span>default p<span class="token punctuation">)</span>: p <span class="token comment" spellcheck="true">#这里按Enter键创建主分区（如果想创建逻辑扩展分区请输入e）</span>
 Partition number <span class="token punctuation">(</span>1-4, default 1<span class="token punctuation">)</span>: <span class="token comment" spellcheck="true">#这里按Enter键</span>
 First sector <span class="token punctuation">(</span>2048-X, default 2048<span class="token punctuation">)</span>: <span class="token comment" spellcheck="true">#这里按Enter键</span>
-Last sector, +/-sectors or +/-size<span class="token operator">&amp;</span><span class="token comment" spellcheck="true">#123;K,M,G,T,P&amp;#125; (2048-X, default X): +10G #输入+10G</span>
+Last sector, +/-sectors or +/-size<span class="token punctuation">{</span>K,M,G,T,P<span class="token punctuation">}</span> <span class="token punctuation">(</span>2048-X, default X<span class="token punctuation">)</span>: +10G <span class="token comment" spellcheck="true">#输入+10G</span>
 Command <span class="token punctuation">(</span>m <span class="token keyword">for</span> help<span class="token punctuation">)</span>: t <span class="token comment" spellcheck="true">#输入t更改分区类型</span>
 Hex code or <span class="token function">alias</span> <span class="token punctuation">(</span>type L to list all<span class="token punctuation">)</span>: 82 <span class="token comment" spellcheck="true">#输入82，创建swap分区</span>
 Command <span class="token punctuation">(</span>m <span class="token keyword">for</span> help<span class="token punctuation">)</span>: n <span class="token comment" spellcheck="true">#输入n创建新分区，然后一直按Enter键，把剩下的空间全部分配给/分区</span>
@@ -570,7 +572,7 @@ $ swapon /dev/sda1
 $ lsblk -f
 <span class="token comment" spellcheck="true">#查看相应分区的文件系统及挂载是否正确</span>
 </code></pre>
-<p>在pacstrap之前，请再检查一下&#x2F;etc&#x2F;pacman.d&#x2F;mirrorlist文件。例如：cat &#x2F;etc&#x2F;pacman.d&#x2F;mirrorlist或vim &#x2F;etc&#x2F;pacman.d&#x2F;mirrorlist。总之，检查一下这个文件即可。</p>
+<p>在pacstrap之前，请再检查一下/etc/pacman.d/mirrorlist文件。例如：cat /etc/pacman.d/mirrorlist或vim /etc/pacman.d/mirrorlist。总之，检查一下这个文件即可。</p>
 <blockquote>
 <p>如有疑问请参考Wiki以下章节：</p>
 <p><a target="_blank" rel="noopener" href="https://wiki.archlinux.org/title/Installation_guide_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#%E5%BB%BA%E7%AB%8B%E7%A1%AC%E7%9B%98%E5%88%86%E5%8C%BA">建立硬盘分区</a></p>
@@ -827,7 +829,7 @@ $ yay
 <span class="token comment" spellcheck="true">#更新系统及AUR软件（paru亦可）</span>
 </code></pre>
 <p>在更新时请先查看ArchLinux官网的新闻公告，看是否需要升级时人为干预；请勿无脑更新。</p>
-<h1 id="END（想再看一边本教程吗？那就请在终端中输入sudo-rm-rf-x2F-，你会回来的。）"><a href="#END（想再看一边本教程吗？那就请在终端中输入sudo-rm-rf-x2F-，你会回来的。）" class="headerlink" title="END（想再看一边本教程吗？那就请在终端中输入sudo rm -rf &#x2F;*，你会回来的。）"></a>END<del>（想再看一边本教程吗？那就请在终端中输入sudo rm -rf &#x2F;*，你会回来的。）</del></h1>
+<h1 id="END（想再看一边本教程吗？那就请在终端中输入sudo-rm-rf-x2F-，你会回来的。）"><a href="#END（想再看一边本教程吗？那就请在终端中输入sudo-rm-rf-x2F-，你会回来的。）" class="headerlink" title="END（想再看一边本教程吗？那就请在终端中输入sudo rm -rf /*，你会回来的。）"></a>END<del>（想再看一边本教程吗？那就请在终端中输入sudo rm -rf /*，你会回来的。）</del></h1>
                 
             </div>
             <hr/>
