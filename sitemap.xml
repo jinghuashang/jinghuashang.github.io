@@ -113,20 +113,6 @@
   </url>
   
   <url>
-    <loc>http://jinghuashang.cn/tags/%E6%B8%B8%E6%88%8F/</loc>
-    <lastmod>2022-07-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>http://jinghuashang.cn/tags/arknights/</loc>
-    <lastmod>2022-07-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>http://jinghuashang.cn/tags/MC/</loc>
     <lastmod>2022-07-03</lastmod>
     <changefreq>weekly</changefreq>
@@ -135,6 +121,20 @@
   
   <url>
     <loc>http://jinghuashang.cn/tags/%E7%BD%91%E7%BB%9C/</loc>
+    <lastmod>2022-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://jinghuashang.cn/tags/%E6%B8%B8%E6%88%8F/</loc>
+    <lastmod>2022-07-03</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>http://jinghuashang.cn/tags/arknights/</loc>
     <lastmod>2022-07-03</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
