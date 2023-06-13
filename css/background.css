@@ -1,0 +1,11 @@
+#web_bg {
+    /* webkit内核 5.1 - 6.0 */
+    background: -webkit-linear-gradient(left, red, blue);
+    /* Opera 11.1 - 12.0 */
+    background: -o-linear-gradient(right, red, blue);
+    /* Firefox 3.6 - 15 */
+    background: -moz-linear-gradient(right, red, blue);
+    /* 标准的语法 */
+    background: linear-gradient(to right, red, blue);
+  }
+  
