@@ -683,6 +683,14 @@ const anzhiyu = {
       // 如果是打赏控制台，就关闭打赏控制台
       consoleEl.classList.remove("reward-show");
     }
+    // 获取center-console元素
+    const centerConsole = document.getElementById('center-console');
+
+    // 检查center-console是否被选中
+    if (centerConsole.checked) {
+      // 取消选中状态
+      centerConsole.checked = false;
+    }
   },
   // 取消加载动画
   hideLoading: function () {
@@ -1143,6 +1151,30 @@ const anzhiyu = {
       window.oncontextmenu = oncontextmenuFunction;
     }
   },
+  switchConsole: () => {
+    // switch console
+    const consoleEl = document.getElementById("console");
+    //初始化隐藏边栏
+    const $htmlDom = document.documentElement.classList;
+    $htmlDom.contains("hide-aside")
+      ? document.querySelector("#consoleHideAside").classList.add("on")
+      : document.querySelector("#consoleHideAside").classList.remove("on");
+    if (consoleEl.classList.contains("show")) {
+      consoleEl.classList.remove("show");
+    } else {
+      consoleEl.classList.add("show");
+    }
+    const consoleKeyboard = document.querySelector("#consoleKeyboard");
+    if (consoleKeyboard) {
+      if (localStorage.getItem("keyboardToggle") === "true") {
+        consoleKeyboard.classList.add("on");
+        anzhiyu_keyboard = true;
+      } else {
+        consoleKeyboard.classList.remove("on");
+        anzhiyu_keyboard = false;
+      }
+    }
+  },
   // 定义 intersectionObserver 函数，并接收两个可选参数
   intersectionObserver: function (enterCallback, leaveCallback) {
     let observer;
@@ -1222,12 +1254,12 @@ const anzhiyu = {
   },
   // 切换菜单显示热评
   switchRightClickMenuHotReview: function () {
-    const postComment = document.getElementById("post-comment")
-    const menuCommentBarrageDom = document.getElementById("menu-commentBarrage")
+    const postComment = document.getElementById("post-comment");
+    const menuCommentBarrageDom = document.getElementById("menu-commentBarrage");
     if (postComment) {
-      menuCommentBarrageDom.style.display = "flex"
+      menuCommentBarrageDom.style.display = "flex";
     } else {
-      menuCommentBarrageDom.style.display = "none"
+      menuCommentBarrageDom.style.display = "none";
     }
-  }
+  },
 };

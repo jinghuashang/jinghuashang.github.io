@@ -288,8 +288,8 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   /**
-   * 代碼
-   * 只適用於Hexo默認的代碼渲染
+   * 代码
+   * 只适用于Hexo默认的代码渲染
    */
   const addHighlightTool = function () {
     const highLight = GLOBAL_CONFIG.highlight;
@@ -420,7 +420,7 @@ document.addEventListener("DOMContentLoaded", function () {
       } else {
         $figureHighlight.forEach(function (item) {
           let langName = item.getAttribute("class").split(" ")[1];
-          if (langName === "plain" || langName === undefined) langName = "Code";
+          if (langName === "plain" || langName === undefined || langName === "plaintext") langName = "Code";
           const highlightLangEle = `<div class="code-lang">${langName}</div>`;
           createEle(highlightLangEle, item, "hl");
         });
@@ -493,7 +493,7 @@ document.addEventListener("DOMContentLoaded", function () {
         i.insertAdjacentHTML("beforeend", htmlStr(arr));
         i.classList.remove("lazyload");
       }
-      window.lazyLoadInstance.update();
+      window.lazyLoadInstance && window.lazyLoadInstance.update();
       return arrLength > loadItem ? loadItem : arrLength;
     };
 
@@ -507,6 +507,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (!item.classList.contains("lazyload") || arr.length < limit) {
         // 不懒加载
         item.innerHTML = htmlStr(arr);
+        item.nextElementSibling.style.display = "none"
       } else {
         if (!item.classList.contains("btn_album_detail_lazyload") || item.classList.contains("page_img_lazyload")) {
           // 滚动懒加载
@@ -554,7 +555,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       anzhiyu.initJustifiedGallery(item);
       anzhiyu.loadLightbox(item.querySelectorAll("img"));
-      window.lazyLoadInstance.update();
+      window.lazyLoadInstance && window.lazyLoadInstance.update();
     };
 
     const addJustifiedGallery = () => {
@@ -708,7 +709,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (document.body.scrollHeight <= innerHeight) {
         $rightside.style.cssText = "opacity: 0.8; transform: translateX(-58px)";
       }
-
+      
       percentageScrollFn(currentTop);
     }, 96);
 
@@ -898,30 +899,6 @@ document.addEventListener("DOMContentLoaded", function () {
         : saveToLocal.set("aside-status", "hide", 2);
       $htmlDom.toggle("hide-aside");
     },
-    switchConsole: () => {
-      // switch console
-      const consoleEl = document.getElementById("console");
-      //初始化隐藏边栏
-      const $htmlDom = document.documentElement.classList;
-      $htmlDom.contains("hide-aside")
-        ? document.querySelector("#consoleHideAside").classList.add("on")
-        : document.querySelector("#consoleHideAside").classList.remove("on");
-      if (consoleEl.classList.contains("show")) {
-        consoleEl.classList.remove("show");
-      } else {
-        consoleEl.classList.add("show");
-      }
-      const consoleKeyboard = document.querySelector("#consoleKeyboard");
-      if (consoleKeyboard) {
-        if (localStorage.getItem("keyboardToggle") === "true") {
-          consoleKeyboard.classList.add("on");
-          anzhiyu_keyboard = true;
-        } else {
-          consoleKeyboard.classList.remove("on");
-          anzhiyu_keyboard = false;
-        }
-      }
-    },
 
     runMobileToc: () => {
       if (window.getComputedStyle(document.getElementById("card-toc")).getPropertyValue("opacity") === "0")
@@ -950,9 +927,6 @@ document.addEventListener("DOMContentLoaded", function () {
         break;
       case "hide-aside-btn":
         rightSideFn.hideAsideBtn();
-        break;
-      case "center-console":
-        rightSideFn.switchConsole();
         break;
       default:
         break;
@@ -1279,6 +1253,11 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
+    if (!GLOBAL_CONFIG.changeMainColorPost) {
+      root.style.setProperty("--anzhiyu-bar-background", "var(--anzhiyu-theme)");
+      anzhiyu.initThemeColor();
+      return
+    }
     const httpRequest = new XMLHttpRequest();
     httpRequest.open("GET", `${path}?imageAve`, true);
     httpRequest.send();
@@ -1449,6 +1428,9 @@ document.addEventListener("DOMContentLoaded", function () {
       anzhiyu.isHidden(document.getElementById("toggle-menu")) && mobileSidebarOpen && sidebarFn.close();
     });
 
+
+    anzhiyu.darkModeStatus();
+
     document.getElementById("menu-mask").addEventListener("click", e => {
       sidebarFn.close();
     });
@@ -1476,6 +1458,9 @@ document.addEventListener("DOMContentLoaded", function () {
     addHighlightTool();
     GLOBAL_CONFIG.isPhotoFigcaption && addPhotoFigcaption();
     scrollFn();
+
+    // 刷新时第一次滚动百分比
+    window.scrollCollect && window.scrollCollect();
 
     const $jgEle = document.querySelectorAll("#content-inner .fj-gallery");
     $jgEle.length && runJustifiedGallery($jgEle);
