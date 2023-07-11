@@ -456,3 +456,20 @@ div#post-comment {
 #post-comment>div.comment-head>div.comment-privacy a:hover {
     color: var(--qjqq-theme);
 }
+
+/* 背景动态渐变色 */
+#body-wrap {
+    background: linear-gradient(to right, #a18cd1, #fbc2eb)!important;
+}
+
+#footer{
+    background: linear-gradient(to right, #a18cd1, #fbc2eb)!important;
+}
+
+#footer-bar{
+    background-color: rgba(255,255,255,0.7);
+}
+
+#page-header.nav-fixed #nav{
+    background-color: rgba(255,255,255,0.8);
+}
