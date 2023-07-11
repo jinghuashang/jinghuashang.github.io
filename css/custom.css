@@ -457,22 +457,18 @@ div#post-comment {
 }
 
 /* 背景动态渐变色 */
-#body-wrap {
+[data-theme="light"] #body-wrap {
     background: linear-gradient(to right, #a18cd1, #fbc2eb)!important;
 }
 
-#footer{
+[data-theme="light"] #footer{
     background: linear-gradient(to right, #a18cd1, #fbc2eb)!important;
 }
 
-.layout #page{
-    background-color: #fff;
-}
-
-#footer-bar{
+[data-theme="light"] #footer-bar{
     background-color: rgba(255,255,255,0.7);
 }
 
-#page-header.nav-fixed #nav{
+[data-theme="light"] #page-header.nav-fixed #nav{
     background-color: rgba(255,255,255,0.8);
 }
