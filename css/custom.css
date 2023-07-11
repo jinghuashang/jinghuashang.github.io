@@ -272,8 +272,5 @@ div#post-comment {
 }
 
 body[data-type="link"] main #page {
-    border: 0;
-    box-shadow: none !important;
-    padding: 0 !important;
     background-color: #fff;
   }
