@@ -59,8 +59,7 @@
     background-color: #3eb8be;
     border-radius: 8px;
   }
-  
-@charset "UTF-8";
+
 
 :root {
     --qjqq-white: #fff;
@@ -258,7 +257,7 @@ div#post-comment {
 #post-comment>div.comment-head>div.comment-privacy a:hover {
     color: var(--qjqq-theme);
 }
-@charset "UTF-8";
+
 
 :root {
     --qjqq-white: #fff;
@@ -464,6 +463,10 @@ div#post-comment {
 
 #footer{
     background: linear-gradient(to right, #a18cd1, #fbc2eb)!important;
+}
+
+.layout #page{
+    background-color: #fff;
 }
 
 #footer-bar{
