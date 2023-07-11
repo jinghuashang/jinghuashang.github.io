@@ -456,9 +456,3 @@ div#post-comment {
 #post-comment>div.comment-head>div.comment-privacy a:hover {
     color: var(--qjqq-theme);
 }
-
-@font-face {
-    font-family: 'CascadiaCodePL';
-    font-display: swap;
-    src: url('./font/a.ttf') format("truetype");
-  }
