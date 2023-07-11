@@ -271,6 +271,6 @@ div#post-comment {
     background-color: rgba(255,255,255,0.9);
 }
 
-body[data-type="link"] main #page {
+[data-theme="light"] #page{
     background-color: #fff;
-  }
+}
