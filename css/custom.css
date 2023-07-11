@@ -457,11 +457,7 @@ div#post-comment {
 }
 
 /* 背景动态渐变色 */
-[data-theme="light"] #body-wrap {
-    background: linear-gradient(to right, #a18cd1, #fbc2eb)!important;
-}
-
-[data-theme="light"] #footer{
+[data-theme="light"] #body-wrap,#footer {
     background: linear-gradient(to right, #a18cd1, #fbc2eb)!important;
 }
 
