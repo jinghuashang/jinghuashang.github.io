@@ -264,7 +264,7 @@ div#post-comment {
 }*/
 
 [data-theme="light"] #body-wrap{
-    background-image: linear-gradient(90deg, #a8edea 0%, #fed6e3 100%);
+    background-image: linear-gradient(90deg, #dcfffd 0%, #f9e4eb 100%);
 }
 
 [data-theme="light"] #footer,[data-theme="light"] #footer-wrap{
