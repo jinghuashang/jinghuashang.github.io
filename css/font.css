@@ -4,12 +4,6 @@
     src: url('https://download.tooc.xlj0.com/uploads/56/AlimamaFangYuanTiVF-Thin.ttf') format("truetype");
   }
 
-@font-face {
-    font-family: 'YuFanXinYu';
-    font-display: swap;
-    src: url('../font/YuFanXinYu.ttf') format("truetype");
-  }
-
 body{
     font-family: 'CascadiaCodePL' !important;
 }
