@@ -23,5 +23,5 @@ body{
 }
 
 #body-wrap #site-info{
-    font-family: 'CascadiaCodePL';
+    font-family: 'CascadiaCodePL' !important;
 }
