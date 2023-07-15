@@ -21,3 +21,7 @@ body{
 .categoryButtonText{
     font-family: 'CascadiaCodePL';
 }
+
+#body-wrap #site-info{
+    ont-family: 'CascadiaCodePL';
+}
