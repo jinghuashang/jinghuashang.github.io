@@ -65,14 +65,14 @@ class ProgressiveLoad {
     }
     loader.progressiveLoad();
   };
-  
+  /*
   const config = {
     smallSrc: 'https://download.tooc.xlj0.com/uploads/56/ccc-y8622k%20%281%29.jpg', // 小图链接 尽可能配置小于100k的图片
     largeSrc: 'https://download.tooc.xlj0.com/uploads/56/ccc-y8622k.jpg', // 大图链接 最终显示的图片
     mobileSmallSrc: 'https://download.tooc.xlj0.com/uploads/56/ccc-y8622k%20%281%29.jpg', // 手机端小图链接 尽可能配置小于100k的图片
     mobileLargeSrc: 'https://download.tooc.xlj0.com/uploads/56/ccc-y8622k.jpg', // 手机端大图链接 最终显示的图片
     enableRoutes: ['/'],
-    };
+    };*/
 
   function initProgressiveLoad(config) {
     const target = document.getElementById('page-header');
