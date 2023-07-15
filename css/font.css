@@ -11,17 +11,17 @@
   }
 
 body{
-    font-family: 'CascadiaCodePL';
+    font-family: 'CascadiaCodePL' !important;
 }
 
 .title{
-    font-family: 'CascadiaCodePL';
+    font-family: 'CascadiaCodePL' !important;
 }
 
 .categoryButtonText{
-    font-family: 'CascadiaCodePL';
+    font-family: 'CascadiaCodePL' !important;
 }
 
-#body-wrap #site-info{
+#site-info{
     font-family: 'CascadiaCodePL' !important;
 }
