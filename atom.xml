@@ -123,58 +123,6 @@
   </entry>
   
   <entry>
-    <title>原神私服</title>
-    <link href="https://jinghuashang.cn/posts/ac0b.html"/>
-    <id>https://jinghuashang.cn/posts/ac0b.html</id>
-    <published>2022-10-22T14:30:59.000Z</published>
-    <updated>2023-06-10T07:14:22.352Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="原神私服"><a href="#原神私服" class="headerlink" title="原神私服"></a>原神私服</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>你还在为抽不到想要的角色发愁吗？<br>你还在为角色升级肝吗？<br>欢迎来到私服，什么一刀9999999999不是梦</p><h2 id="关于"><a href="#关于" class="headerlink" title="关于"></a>关于</h2><p>本项目地址来自<a href="https://grasscutter.io/">grasscutter</a><br>项目开源地址：<a href="https://github.com/Grasscutters/Grasscutter">https://github.com/Grasscutters/Grasscutter</a><br><del>其他教程地址: <a href="https://moeyy.cn/2050">moeyy</a></del>[！已废弃]</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;原神私服&quot;&gt;&lt;a href=&quot;#原神私服&quot; class=&quot;headerlink&quot; title=&quot;原神私服&quot;&gt;&lt;/a&gt;原神私服&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h</summary>
-      
-    
-    
-    
-    <category term="教程" scheme="https://jinghuashang.cn/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    
-    <category term="server" scheme="https://jinghuashang.cn/tags/server/"/>
-    
-    <category term="genshin" scheme="https://jinghuashang.cn/tags/genshin/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>原神 for Linux</title>
-    <link href="https://jinghuashang.cn/posts/1ec2.html"/>
-    <id>https://jinghuashang.cn/posts/1ec2.html</id>
-    <published>2022-10-22T14:30:46.000Z</published>
-    <updated>2023-06-10T07:15:38.417Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="原神-for-Linux-食用方法"><a href="#原神-for-Linux-食用方法" class="headerlink" title="原神 for Linux 食用方法"></a>原神 for Linux 食用方法</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>原神在linux上食用的方法非常简单，但补丁是米哈游强力禁止的，所以请不要外传</p><h2 id="dxvk·图形处理"><a href="#dxvk·图形处理" class="headerlink" title="dxvk·图形处理"></a>dxvk·图形处理</h2><p><a href="https://github.com/doitsujin/dxvk">文档地址</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#要将从发布页面获取的 [DXVK]https://github.com/doitsujin/dxvk/releases 软件包安装到给定的 wine 前缀中，请从 DXVK 目录中运行以下命令：</span></span><br><span class="line"><span class="built_in">export</span> WINEPREFIX=/path/to/.wine-prefix</span><br><span class="line"></span><br><span class="line">./setup_dxvk.sh install</span><br></pre></td></tr></table></figure><h2 id="dawn-重点"><a href="#dawn-重点" class="headerlink" title="dawn(重点)"></a>dawn(重点)</h2><p>这个就是补丁文件，也是原神 for linux的必要<br><a href="https://notabug.org/Krock/dawn">文档地址</a></p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拉取git文件</span></span><br><span class="line">git <span class="built_in">clone</span> https://notabug.org/Krock/dawn --depth 1</span><br><span class="line"></span><br><span class="line"><span class="comment">#切换到你的原神目录</span></span><br><span class="line"><span class="built_in">cd</span> <span class="string">&quot;/path/to/Genshin Impact Game&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#运行脚本</span></span><br><span class="line">bash <span class="string">&quot;/path/to/dawn/GAMEVER/patch.sh&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 注意脚本位置</span></span><br><span class="line">bash <span class="string">&quot;/path/to/dawn/GAMEVER/patch_anti_logincrash.sh&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 运行原神启动器</span></span><br><span class="line">wine cmd /c launcher.exe</span><br></pre></td></tr></table></figure><h2 id="视频教程"><a href="#视频教程" class="headerlink" title="视频教程"></a>视频教程</h2><p><del>有时间补上</del><br>因为某种原因，就不补上了</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h1 id=&quot;原神-for-Linux-食用方法&quot;&gt;&lt;a href=&quot;#原神-for-Linux-食用方法&quot; class=&quot;headerlink&quot; title=&quot;原神 for Linux 食用方法&quot;&gt;&lt;/a&gt;原神 for Linux 食用方法&lt;/h1&gt;&lt;h2 id=&quot;前言&quot;&gt;&lt;</summary>
-      
-    
-    
-    
-    <category term="教程" scheme="https://jinghuashang.cn/categories/%E6%95%99%E7%A8%8B/"/>
-    
-    
-    <category term="linux" scheme="https://jinghuashang.cn/tags/linux/"/>
-    
-    <category term="game" scheme="https://jinghuashang.cn/tags/game/"/>
-    
-  </entry>
-  
-  <entry>
     <title>misskey</title>
     <link href="https://jinghuashang.cn/posts/de31.html"/>
     <id>https://jinghuashang.cn/posts/de31.html</id>
