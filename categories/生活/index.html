@@ -37,14 +37,15 @@
   },
   isPhotoFigcaption: false,
   islazyload: true,
-  isAnchor: false
+  isAnchor: false,
+  shortcutKey: true
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: '分类: 生活',
   isPost: false,
   isHome: false,
   isHighlightShrink: false,
   isToc: false,
-  postUpdate: '2023-07-25 00:12:08'
+  postUpdate: '2023-07-25 10:17:47'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -226,7 +227,7 @@ backSpeed: 20
 var anzhiyu_keyUpEvent_timeoutId = null
 var anzhiyu_keyUpShiftDelayEvent_timeoutId = null
 // 是否开启快捷键
-var anzhiyu_keyboard = localStorage.getItem("keyboardToggle") ? localStorage.getItem("keyboardToggle") : false;
+anzhiyu_keyboard = localStorage.getItem("keyboardToggle") ? localStorage.getItem("keyboardToggle") : false;
 function addKeyShotListener() {
   const windowObject = window;
   windowObject.removeEventListener("keydown", keyDownEvent);
@@ -477,7 +478,7 @@ queueMicrotask(() => {
     if (typeof twikoo === 'object') {
       runTwikoo()
     } else {
-      getScript('https://npm.elemecdn.com/twikoo@1.6.16/dist/twikoo.all.min.js').then(runTwikoo)
+      getScript('https://npm.elemecdn.com/twikoo@1.6.17/dist/twikoo.all.min.js').then(runTwikoo)
     }
   }
 

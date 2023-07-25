@@ -37,7 +37,8 @@
   },
   isPhotoFigcaption: false,
   islazyload: true,
-  isAnchor: false
+  isAnchor: false,
+  shortcutKey: true
 }</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
   title: '朋友圈',
   isPost: false,
@@ -422,7 +423,7 @@ backSpeed: 20
 var anzhiyu_keyUpEvent_timeoutId = null
 var anzhiyu_keyUpShiftDelayEvent_timeoutId = null
 // 是否开启快捷键
-var anzhiyu_keyboard = localStorage.getItem("keyboardToggle") ? localStorage.getItem("keyboardToggle") : false;
+anzhiyu_keyboard = localStorage.getItem("keyboardToggle") ? localStorage.getItem("keyboardToggle") : false;
 function addKeyShotListener() {
   const windowObject = window;
   windowObject.removeEventListener("keydown", keyDownEvent);
@@ -673,7 +674,7 @@ queueMicrotask(() => {
     if (typeof twikoo === 'object') {
       runTwikoo()
     } else {
-      getScript('https://npm.elemecdn.com/twikoo@1.6.16/dist/twikoo.all.min.js').then(runTwikoo)
+      getScript('https://npm.elemecdn.com/twikoo@1.6.17/dist/twikoo.all.min.js').then(runTwikoo)
     }
   }
 
