@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'CascadiaCodePL';
     font-display: swap;
-    src: url('https://download.tooc.xlj0.com/uploads/56/AlimamaFangYuanTiVF-Thin.ttf') format("truetype");
+    src: url('/font/AlimamaFangYuanTiVF-Thin.ttf') format("truetype");
   }
 
 body{
