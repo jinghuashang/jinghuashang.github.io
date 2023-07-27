@@ -272,9 +272,7 @@ div#post-comment {
 }
 
 [data-theme="light"] #footer-bar{
-    background-color: rgba(255,255,255,0.7);
+    background-color: rgba(255,255,255,0.8);
 }
 
-[data-theme="light"] #page-header.nav-fixed #nav{
-    background-color: rgba(255,255,255,0.9);
-}
+
