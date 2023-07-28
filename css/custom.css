@@ -1,264 +1,70 @@
+/* 设置鼠标悬停时的边框样式 */
+#aside-content > .card-widget.card-info:hover {
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.4); /* 添加模糊边框效果，边框颜色为黑色，模糊度为 8px */
+}
 /* 侧边栏个人信息卡片动态渐变色 */
-#aside-content > .card-widget.card-info {
-    background: linear-gradient(
-      -45deg,
-      #e8d8b9,
-      #eccec5,
-      #a3e9eb,
-      #bdbdf0,
-      #eec1ea
-    );
-    /*box-shadow: 0 0 5px rgb(66, 68, 68);*/
-    position: relative;
-    background-size: 400% 400%;
-    -webkit-animation: Gradient 10s ease infinite;
-    -moz-animation: Gradient 10s ease infinite;
-    animation: Gradient 10s ease infinite !important;
+#aside-content > .card-widget.card-info::before {
+  background: linear-gradient(
+    -45deg,
+    #e8d8b9,
+    #eccec5,
+    #a3e9eb,
+    #bdbdf0,
+    #eec1ea
+  );
+  border: 0px;
+  position: absolute;
+  background-size: 400% 400%;
+  -webkit-animation: Gradient 10s ease infinite;
+  -moz-animation: Gradient 10s ease infinite;
+  animation: Gradient 10s ease infinite !important;
+}
+@-webkit-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
   }
-  @-webkit-keyframes Gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  50% {
+    background-position: 100% 50%;
   }
-  @-moz-keyframes Gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+  100% {
+    background-position: 0% 50%;
   }
-  @keyframes Gradient {
-    0% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-    100% {
-      background-position: 0% 50%;
-    }
+}
+@-moz-keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
   }
-  
-  /* 黑夜模式适配 */
-  [data-theme="dark"] #aside-content > .card-widget.card-info {
-    background: #191919ee;
+  50% {
+    background-position: 100% 50%;
   }
-  
-  /* 个人信息Follow me按钮 */
-  #aside-content > .card-widget.card-info > #card-info-btn {
-    background-color: #3eb8be;
-    border-radius: 8px;
+  100% {
+    background-position: 0% 50%;
   }
-
-
-:root {
-    --qjqq-white: #fff;
-    --qjqq-white-op: rgba(255, 255, 255, 0.2);
-    --qjqq-black: #000;
-    --qjqq-black-op: rgba(0, 0, 0, 0.2);
-    --qjqq-none: #00000000;
-    --qjqq-gray: #999999;
-    --qjqq-gray-op: #9999992b;
-    --qjqq-vip: #e5a80d;
-    --qjqq-main: var(--qjqq-theme);
-    --qjqq-main-op: var(--qjqq-theme-op);
-    --qjqq-main-op-deep: var(--qjqq-theme-op-deep);
-    --qjqq-main-none: var(--qjqq-theme-none);
-    --qjqq-shadow-theme: 0 8px 12px -3px var(--qjqq-theme-op);
-    --qjqq-shadow-blackdeep: 0 2px 16px -3px rgba(0, 0, 0, .15);
-    --qjqq-shadow-main: 0 8px 12px -3px var(--qjqq-main-op);
-    --qjqq-shadow-blue: 0 8px 12px -3px rgba(40, 109, 234, .20);
-    --qjqq-shadow-white: 0 8px 12px -3px rgba(255, 255, 255, .20);
-    --qjqq-shadow-black: 0 0 12px 4px rgba(0, 0, 0, .05);
-    --qjqq-shadow-yellow: 0px 38px 77px -26px rgba(255, 201, 62, .12);
-    --qjqq-shadow-red: 0 8px 12px -3px #ee7d7936;
-    --qjqq-shadow-green: 0 8px 12px -3px #87ee7936;
-    --qjqq-logo-color: linear-gradient(215deg, #4584ff 0%, #cf0db9 100%);
-    --qjqq-snackbar-time: 5s;
+}
+@keyframes Gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
-::selection {
-    background: var(--qjqq-fontcolor);
-    color: var(--qjqq-background);
+/* 黑夜模式适配 */
+[data-theme="dark"] #aside-content > .card-widget.card-info {
+  background: #191919ee;
 }
 
-[data-theme=light] {
-    --qjqq-theme: #425AEF;
-    --qjqq-theme-op: #4259ef23;
-    --qjqq-theme-op-deep: #4259efdd;
-    --qjqq-theme-none: #4259ef01;
-    --qjqq-blue: #425AEF;
-    --qjqq-red: #f04a63;
-    --qjqq-pink: #FF7C7C;
-    --qjqq-green: #57bd6a;
-    --qjqq-yellow: #c28b00;
-    --qjqq-yellow-op: #d99c001a;
-    --qjqq-orange: #e38100;
-    --qjqq-fontcolor: #363636;
-    --qjqq-background: #f7f9fe;
-    --qjqq-reverse: #000;
-    --qjqq-maskbg: rgba(255, 255, 255, 0.6);
-    --qjqq-maskbgdeep: rgba(255, 255, 255, 0.85);
-    --qjqq-hovertext: var(--qjqq-main);
-    --qjqq-ahoverbg: #F7F7FA;
-    --qjqq-lighttext: var(--qjqq-main);
-    --qjqq-secondtext: rgba(60, 60, 67, 0.8);
-    --qjqq-scrollbar: rgba(60, 60, 67, 0.4);
-    --qjqq-card-btn-bg: #edf0f7;
-    --qjqq-post-blockquote-bg: #fafcff;
-    --qjqq-post-tabs-bg: #f2f5f8;
-    --qjqq-secondbg: #f1f3f8;
-    --qjqq-shadow-nav: 0 5px 12px -5px rgba(102, 68, 68, 0.05);
-    --qjqq-card-bg: #fff;
-    --qjqq-card-bg-op: var(--qjqq-black-op);
-    --qjqq-card-bg-none: rgba(255, 255, 255, 0);
-    --qjqq-shadow-lightblack: 0 5px 12px -5px rgba(102, 68, 68, 0.00);
-    --qjqq-shadow-light2black: 0 5px 12px -5px rgba(102, 68, 68, 0.00);
-    --qjqq-card-border: #e3e8f7;
-    --qjqq-shadow-border: 0 8px 16px -4px #2c2d300c;
-    --style-border: 1px solid var(--qjqq-card-border);
-    --style-border-always: 1px solid var(--qjqq-card-border);
-    --style-border-hover: 1px solid var(--qjqq-main);
-    --style-border-hover-always: 1px solid var(--qjqq-main);
-    --style-border-dashed: 1px dashed var(--qjqq-theme-op);
-    --style-border-forever: 2px solid var(--qjqq-main);
-}
-
-[data-theme=dark] {
-    --qjqq-theme: #f2b94b;
-    --qjqq-theme-op: #f2b94b23;
-    --qjqq-theme-op-deep: #f2b94bdd;
-    --qjqq-theme-none: #f2b94b00;
-    --qjqq-blue: #0084FF;
-    --qjqq-red: #FF3842;
-    --qjqq-pink: #d44040;
-    --qjqq-green: #3e9f50;
-    --qjqq-yellow: #ffc93e;
-    --qjqq-yellow-op: #ffc93e30;
-    --qjqq-orange: #ff953e;
-    --qjqq-fontcolor: #F7F7FA;
-    --qjqq-background: #18171d;
-    --qjqq-reverse: #fff;
-    --qjqq-maskbg: rgba(0, 0, 0, 0.6);
-    --qjqq-maskbgdeep: rgba(0, 0, 0, 0.85);
-    --qjqq-hovertext: #0A84FF;
-    --qjqq-ahoverbg: #fff;
-    --qjqq-lighttext: var(--qjqq-theme);
-    --qjqq-secondtext: #a1a2b8;
-    --qjqq-scrollbar: rgba(200, 200, 223, 0.4);
-    --qjqq-card-btn-bg: #30343f;
-    --qjqq-post-blockquote-bg: #000;
-    --qjqq-post-tabs-bg: #121212;
-    --qjqq-secondbg: #30343f;
-    --qjqq-shadow-nav: 0 5px 20px 0px rgba(28, 28, 28, 0.4);
-    --qjqq-card-bg: #1d1e22;
-    --qjqq-card-bg-op: var(--qjqq-white-op);
-    --qjqq-card-bg-none: #1d1b2600;
-    --qjqq-shadow-lightblack: 0 5px 12px -5px rgba(102, 68, 68, 0.0);
-    --qjqq-shadow-light2black: 0 5px 12px -5px rgba(102, 68, 68, 0.0);
-    --qjqq-card-border: #3d3d3f;
-    --qjqq-shadow-border: 0 8px 16px -4px #00000050;
-    --style-border: 1px solid var(--qjqq-card-border);
-    --style-border-always: 1px solid var(--qjqq-card-border);
-    --style-border-hover: 1px solid var(--qjqq-theme);
-    --style-border-hover-always: 1px solid var(--qjqq-theme);
-    --style-border-dashed: 1px dashed var(--qjqq-theme-op);
-    --style-border-forever: 2px solid var(--qjqq-lighttext);
-}
-
-#footer-bar {
-    padding: 1rem;
-    color: var(--qjqq-fontcolor);
-    margin-top: 1rem;
-    background: var(--qjqq-secondbg);
-    display: flex;
-    overflow: hidden;
-    z-index: 1002;
-    transition: 0.3s;
-}
-
-#footer-bar .footer-bar-links {
-    display: flex;
-    justify-content: space-between;
-    max-width: 1400px;
-    width: 100%;
-    margin: 0 auto;
-    flex-wrap: wrap;
-    align-items: center;
-    line-height: 1;
-}
-
-#footer-bar .footer-bar-left {
-    display: flex;
-    flex-wrap: wrap;
-    min-height: 32px;
-    align-items: center;
-}
-
-#footer-bar .footer-bar-link {
-    margin-top: 8px;
-    margin-bottom: 8px;
-    margin-right: 1rem;
-    color: var(--qjqq-fontcolor);
-    /*font-size: 0.8rem;*/
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-#footer-bar .footer-bar-link.cc {
-    margin-right: 0rem;
-}
-
-#footer-bar .footer-bar-link.cc i {
-    margin-right: 0.5rem;
-    font-size: 18px;
-}
-
-#footer-bar .footer-bar-link:hover {
-    color: var(--qjqq-theme);
-}
-
-#footer-bar>div>div.footer-bar-left>span {
-    margin-right: 1rem;
-}
-
-#footer-bar .footer-bar-right a:hover {
-    color: var(--qjqq-lighttext);
-}
-
-#footer_deal i {
-    font-size: 0.9rem;
-    line-height: 0.9rem;
-    height: 0.9rem;
+/* 个人信息Follow me按钮 */
+#aside-content > .card-widget.card-info > #card-info-btn {
+  background-color: #3eb8be;
+  border-radius: 8px;
 }
 
 
-div#post-comment {
-    margin-top: 2rem;
-}
-
-#post-comment>div.comment-head>div.comment-privacy {
-    display: block;
-    justify-content: space-between;
-    margin-left: 8px;
-    font-size: 13px;
-}
-
-#post-comment>div.comment-head>div.comment-privacy a:hover {
-    color: var(--qjqq-theme);
-}
-
-/* 背景渐变色 */
 /*[data-theme="light"] #body-wrap,[data-theme="light"] #footer {
     background: url(/css/kouseki.css) 26% center/cover no-repeat,linear-gradient(90deg,rgba(247,149,51,.1),rgba(243,112,85,.1) 15%,rgba(239,78,123,.1) 30%,rgba(161,102,171,.1) 44%,rgba(80,115,184,.1) 58%,rgba(16,152,173,.1) 72%,rgba(7,179,155,.1) 86%,rgba(109,186,130,.1))!important;
 }*/
@@ -275,4 +81,13 @@ div#post-comment {
     background-color: rgba(255,255,255,0.8);
 }
 
+[data-theme="light"] #page-header.nav-fixed #nav {
+    background: rgba(255, 255, 255, 0.75) !important;
+    backdrop-filter: blur(8px);
+}
 
+[data-theme="light"] .menus_item_child{
+  background-color: rgba(255,255,255,.6)!important;
+  backdrop-filter: blur(7px)!important;
+  -webkit-backdrop-filter: blur(7px)!important;
+}
