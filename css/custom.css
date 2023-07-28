@@ -85,3 +85,9 @@
     background: rgba(255, 255, 255, 0.75) !important;
     backdrop-filter: blur(8px);
 }
+
+[data-theme=light] #nav .menus_items .menus_item .menus_item_child {
+  background-color: rgba(255,255,255,.6)!important;
+  backdrop-filter: blur(7px)!important;
+  -webkit-backdrop-filter: blur(7px)!important;
+}
