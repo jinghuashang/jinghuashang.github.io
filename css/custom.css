@@ -91,3 +91,7 @@
   backdrop-filter: blur(7px)!important;
   -webkit-backdrop-filter: blur(7px)!important;
 }
+
+.reward-button.button--animated::before:hover{
+  background-color: #bdbdf0;
+}
