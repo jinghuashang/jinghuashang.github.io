@@ -17324,9 +17324,6 @@ p.p.gray {
 [data-theme='dark'] #post-comment #comment-switch .switch-btn {
   filter: brightness(0.8);
 }
-[data-theme='dark'] .note {
-  filter: brightness(0.8);
-}
 [data-theme='dark'] .hide-button,
 [data-theme='dark'] .btn-anzhiyu,
 [data-theme='dark'] .hl-label,
