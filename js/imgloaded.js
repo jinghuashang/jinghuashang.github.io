@@ -67,10 +67,10 @@ class ProgressiveLoad {
   };
 
   const config = {
-    smallSrc: 'https://img.moeyy.xyz/file/bfe4eaff05f6287521e3d.jpg', // 小图链接 尽可能配置小于100k的图片
-    largeSrc: 'https://img.moeyy.xyz/file/2bcdd261ee5f1f748473e.jpg', // 大图链接 最终显示的图片
-    mobileSmallSrc: 'https://img.moeyy.xyz/file/bfe4eaff05f6287521e3d.jpg', // 手机端小图链接 尽可能配置小于100k的图片
-    mobileLargeSrc: 'https://img.moeyy.xyz/file/2bcdd261ee5f1f748473e.jpg', // 手机端大图链接 最终显示的图片
+    smallSrc: 'https://img.jinghuashang.cn/index/bfe4eaff05f6287521e3d.jpg', // 小图链接 尽可能配置小于100k的图片
+    largeSrc: 'https://img.jinghuashang.cn/index/2bcdd261ee5f1f748473e.jpg', // 大图链接 最终显示的图片
+    mobileSmallSrc: 'https://img.jinghuashang.cn/index/bfe4eaff05f6287521e3d.jpg', // 手机端小图链接 尽可能配置小于100k的图片
+    mobileLargeSrc: 'https://img.jinghuashang.cn/index/2bcdd261ee5f1f748473e.jpg', // 手机端大图链接 最终显示的图片
     enableRoutes: ['/'],
     };
 
