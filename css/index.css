@@ -6425,14 +6425,14 @@ body[data-type="link"] #page .page-title {
   text-overflow: ellipsis;
 }
 .games-item .games-item-content .games-item-content-item .games-item-content-item-gametime {
-  line-height: 20px;
+  font-size: 12px;
   color: var(--anzhiyu-secondtext);
-  height: 60px;
-  display: -webkit-box;
+  line-height: 16px;
+  margin-bottom: 5px;
+  white-space: nowrap;
   overflow: hidden;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  font-size: 14px;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
 }
 .games-item .games-item-content .games-item-content-item .games-item-content-item-description {
   line-height: 20px;
