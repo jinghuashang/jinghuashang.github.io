@@ -69,7 +69,7 @@ class ProgressiveLoad {
   const config = {
     smallSrc: 'https://jinghuashang-img-api.s3.bitiful.net/cover/wallhaven-zypj7v.webp', // 小图链接 尽可能配置小于100k的图片
     largeSrc: 'https://jinghuashang-img-api.s3.bitiful.net/cover/wallhaven-zypj7v.webp', // 大图链接 最终显示的图片
-    mobileSmallSrc: 'https://jinghuashang-img-api.s3.bitiful.net/cover/wallhaven-zypj7v.webp, // 手机端小图链接 尽可能配置小于100k的图片
+    mobileSmallSrc: 'https://jinghuashang-img-api.s3.bitiful.net/cover/wallhaven-zypj7v.webp', // 手机端小图链接 尽可能配置小于100k的图片
     mobileLargeSrc: 'https://jinghuashang-img-api.s3.bitiful.net/cover/wallhaven-zypj7v.webp', // 手机端大图链接 最终显示的图片
     enableRoutes: ['/'],
     };
