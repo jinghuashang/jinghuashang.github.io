@@ -1,18 +1,18 @@
 @font-face {
-    font-family: 'CascadiaCodePL';
+    font-family: 'AlimamaFangYuanTiVF-Thin';
     font-display: swap;
     src: url('https://download.tooc.xlj0.com/uploads/56/AlimamaFangYuanTiVF-Thin.ttf') format("truetype");
   }
 
 body{
-    font-family: 'CascadiaCodePL' !important;
+    font-family: 'AlimamaFangYuanTiVF-Thin' !important;
 }
 
 .title{
-    font-family: 'CascadiaCodePL' !important;
+    font-family: 'AlimamaFangYuanTiVF-Thin' !important;
 }
 
 .categoryButtonText{
-    font-family: 'CascadiaCodePL' !important;
+    font-family: 'AlimamaFangYuanTiVF-Thin' !important;
 }
 
