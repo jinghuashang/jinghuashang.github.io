@@ -1,18 +1,18 @@
 @font-face {
-    font-family: 'AlimamaFangYuanTiVF-Thin';
+    font-family: 'AlimamaFangYuanTiVF';
     font-display: swap;
     src: url('https://download.tooc.xlj0.com/uploads/56/AlimamaFangYuanTiVF-Thin.ttf') format("truetype");
   }
 
 body{
-    font-family: 'AlimamaFangYuanTiVF-Thin' !important;
+    font-family: 'AlimamaFangYuanTiVF' !important;
 }
 
 .title{
-    font-family: 'AlimamaFangYuanTiVF-Thin' !important;
+    font-family: 'AlimamaFangYuanTiVF' !important;
 }
 
 .categoryButtonText{
-    font-family: 'AlimamaFangYuanTiVF-Thin' !important;
+    font-family: 'AlimamaFangYuanTiVF' !important;
 }
 
