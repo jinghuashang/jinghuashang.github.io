@@ -1444,12 +1444,7 @@ const anzhiyuPopupManager = {
       this.processQueue();
     }, duration);
   },
-};
 
-const jinghuashang = {
-  /**
- * 背景滚动显隐
- */
   BgScrollHide: () => {
     if (document.body.clientWidth <= 768 || !document.querySelector("#jinghuashang-home_bg")) return;
     const $plcontainer = document.querySelector("#jinghuashang-home_bg"),
@@ -1528,5 +1523,5 @@ const jinghuashang = {
         }
       }
     }
-  }
-}
+  },
+};
