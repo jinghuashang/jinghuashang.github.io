@@ -1733,7 +1733,6 @@ document.addEventListener("DOMContentLoaded", function () {
     anzhiyu.switchRightClickMenuHotReview();
     anzhiyu.getCustomPlayList();
     anzhiyu.addEventListenerConsoleMusicList(false);
-    anzhiyu.setVideosBG().then(anzhiyu.BgScrollHide);
     setTimeout(() => {
       setInputFocusListener();
       if (typeof addFriendLinksInFooter === "function") {

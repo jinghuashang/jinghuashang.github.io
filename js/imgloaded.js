@@ -1,113 +1,84 @@
-// 首页头图加载优化
-/**
- * @description 实现medium的渐进加载背景的效果
- */
-  // 定义ProgressiveLoad类
-  class ProgressiveLoad {
-    constructor(smallSrc, largeSrc) {
-      this.smallSrc = smallSrc;
-      this.largeSrc = largeSrc;
-      this.initScrollListener(),
-      this.initTpl();
-    }
-    // 这里的1是滚动全程渐变 改为0.3就是前30%渐变后固定前30%产生的渐变效果
-    initScrollListener() {
-      window.addEventListener("scroll", (()=>{
-        var e = Math.min(window.scrollY / window.innerHeight, 1);
-        this.container.style.setProperty("--process", e)
+const jinghuashang = {
+    /**
+   * 背景滚动显隐
+   */
+    BgScrollHide: () => {
+      if (document.body.clientWidth <= 768 || !document.querySelector("#jinghuashang-home_bg")) return;
+      const $plcontainer = document.querySelector("#jinghuashang-home_bg"),
+        $Top_Video = document.querySelector("#jinghuashang-home_bg #Top_Video"),
+        Top_Video_toggle = {
+          play: ($Top_Video) => {
+            if ($Top_Video && $Top_Video.paused) {
+              $Top_Video.play()
+              // $Top_Video.autoplay = true;
+              // console.info("播放");
+            }
+          },
+          pause: ($Top_Video) => {
+            if ($Top_Video && !$Top_Video.paused) {
+              $Top_Video.pause();
+              // console.info("暂停");
+            }
+          }
+        };
+      function scrollBg() {
+        // 缓存常用dom元素
+        const currentTop = window.scrollY || document.documentElement.scrollTop,
+          scrollPercent = anzhiyu.getScrollPercent(currentTop, document.body);
+        let Plcontainer = scrollPercent / 50;
+  
+        if ($plcontainer) {
+          if (Plcontainer > 1) {
+            Plcontainer = 1;
+            // 完全隐藏时停止视频播放
+            Top_Video_toggle.pause($Top_Video);
+          } else {
+            // 显现时视频播放
+            Top_Video_toggle.play($Top_Video);
+          }
+          $plcontainer.style.cssText = '--bg_process:' + Plcontainer + ';display: block';
+        }
       }
-      ))
-    }
+      scrollBg();
+      anzhiyu.addEventListenerPjax(window, "scroll", scrollBg, { passive: true });
+    },
     /**
-     * @description 生成ui模板
-     */
-    initTpl() {
-      this.container = document.createElement('div');
-      this.smallStage = document.createElement('div');
-      this.largeStage = document.createElement('div');
-      this.video = document.createElement('div');
-      this.smallImg = new Image();
-      this.largeImg = new Image();
-      this.container.className = 'pl-container';
-      this.container.style.setProperty("--process", 0),
-      this.smallStage.className = 'pl-img pl-blur';
-      this.largeStage.className = 'pl-img';
-      this.video.className = 'pl-video';
-      this.container.appendChild(this.smallStage);
-      this.container.appendChild(this.largeStage);
-      this.container.appendChild(this.video);
-      this.smallImg.onload = this._onSmallLoaded.bind(this);
-      this.largeImg.onload = this._onLargeLoaded.bind(this);
-    }
+   * 随机壁纸 autoplay=""
+   */
+    setVideosBG: async () => {
+      const $VideosBGID = document.querySelector("#jinghuashang-home_bg");
   
-    /**
-     * @description 加载背景
-     */
-    progressiveLoad() {
-      this.smallImg.src = this.smallSrc;
-      this.largeImg.src = this.largeSrc;
-    }
-    /**
-     * @description 大图加载完成
-     */
-    _onLargeLoaded() {
-      this.largeStage.classList.add('pl-visible');
-      this.largeStage.style.backgroundImage = `url('${this.largeSrc}')`;
-    }
-     /**
-     * @description 小图加载完成
-     */
-    _onSmallLoaded() {
-      this.smallStage.classList.add('pl-visible');
-      this.smallStage.style.backgroundImage = `url('${this.smallSrc}')`;
+      if ($VideosBGID) {
+        let videosStore = saveToLocal.get('videosStore');
+  
+        if (videosStore) {
+          getVideosBg()
+        } else {
+          const response = await fetch("/json/images_videos.json"),
+            Array = await response.json();
+          videosStore = Array;
+          getVideosBg()
+          saveToLocal.set('videosStore', videosStore, 1);
+        }
+  
+        function getVideosBg() {
+          //用于判断是否第一次加载
+          if (sessionStorage.getItem("videoReload") && document.body.clientWidth > 768) {
+            const $videoRandomInt = Math.floor(Math.random() * videosStore.videos.length);
+            // console.info("video", $videoRandomInt);
+            $VideosBGID.classList.add("Top_Video"),
+              $VideosBGID.innerHTML = `<video id="Top_Video" width="100%" height="100%" preload="auto" loop="" muted="true" playsinline="" webkit-playsinline="" x5-playsinline="" x5-video-player-type="h5" x5-video-player-fullscreen="" x5-video-orientation="portraint" x-webkit-airplay="allow"><source src="${videosStore.videos[$videoRandomInt]}" type="video/mp4"></video>`;
+          } else {
+            //若为第一次加载
+            const $imgRandomInt = Math.floor(Math.random() * videosStore.images.length);
+            // console.info("img", $imgRandomInt);
+            $VideosBGID.innerHTML = `<div id="jinghuashang-home_img" style="background-image: url('${videosStore.images[$imgRandomInt]}');"></div>`;
+  
+            if (document.body.clientWidth > 768) {
+              sessionStorage.setItem("videoReload", true);
+            }
+          }
+        }
+      }
     }
   }
-  
-  const executeLoad = (config, target) => {
-    console.log('执行渐进背景替换');
-    const isMobile = window.matchMedia('(max-width: 767px)').matches;
-    const loader = new ProgressiveLoad(
-      isMobile ? config.mobileSmallSrc : config.smallSrc,
-      isMobile ? config.mobileLargeSrc : config.largeSrc
-    );
-    // 和背景图颜色保持一致，防止高斯模糊后差异较大
-    if (target.children[0]) {
-      target.insertBefore(loader.container, target.children[0]);
-    }
-    loader.progressiveLoad();
-  };
-  
-  const config = {
-    smallSrc: 'https://imgapi.jinghuashang.cn/random', // 小图链接 尽可能配置小于100k的图片
-    largeSrc: 'https://imgapi.jinghuashang.cn/random', // 大图链接 最终显示的图片
-    mobileSmallSrc: 'https://imgapi.jinghuashang.cn/random', // 手机端小图链接 尽可能配置小于100k的图片
-    mobileLargeSrc: 'https://imgapi.jinghuashang.cn/random', // 手机端大图链接 最终显示的图片
-    enableRoutes: ['/'],
-    };
-  
-  function initProgressiveLoad(config) {
-    // 每次加载前先清除已有的元素
-    const container = document.querySelector('.pl-container'); 
-    if (container) {
-      container.remove(); 
-    }
-    const target = document.getElementById('page-header');
-    if (target && target.classList.contains('full_page')) {
-      executeLoad(config, target);
-    }
-  }
-  
-  function onPJAXComplete(config) {
-    const target = document.getElementById('page-header');
-    if (target && target.classList.contains('full_page')) {
-      initProgressiveLoad(config);
-    }
-  }
-  
-  document.addEventListener("DOMContentLoaded", function() {
-    initProgressiveLoad(config);
-  });
-  
-  document.addEventListener("pjax:complete", function() {
-    onPJAXComplete(config);
-  });
