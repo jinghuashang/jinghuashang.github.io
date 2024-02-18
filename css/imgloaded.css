@@ -1,67 +1,77 @@
+/* 首页头图加载 */
+body[data-type=anzhiyu] #nav,body[data-type=anzhiyu] #scroll-down,body[data-type=anzhiyu] #site-info {
+  -webkit-animation: scale 2.2s cubic-bezier(.6,.1,.25,1) .5s 1 backwards;
+  animation: scale 2.2s cubic-bezier(.6,.1,.25,1) .5s 1 backwards
+}
+
+@media screen and (max-width: 768px) {
+  .pl-container {
+      position:relative!important
+  }
+}
+
 @media screen and (min-width: 768px) {
-    #jinghuashang-home_bg {
-      will-change:opacity,transform,filter;
-      opacity: calc(1 - var(--bg_process) * 1)!important;
-      -webkit-transform: scale(calc(1 + var(--bg_process) * .1));
-      -ms-transform: scale(calc(1 + var(--bg_process) * .1));
-      transform: scale(calc(1 + var(--bg_process) * .1));
-      -webkit-filter: blur(calc(var(--bg_process) * 10px));
-      filter: blur(calc(var(--bg_process) * 10px));
-      -webkit-transition: opacity .1s,-webkit-transform .1s,-webkit-filter .1s;
-      transition: opacity .1s,-webkit-transform .1s,-webkit-filter .1s;
-      -o-transition: opacity .1s,transform .1s,filter .1s;
-      transition: opacity .1s,transform .1s,filter .1s;
-      transition: opacity .1s,transform .1s,filter .1s,-webkit-transform .1s,-webkit-filter .1s
-    }
+  #page-header.full_page,.pl-container {
+    height:100vh
   }
-  body[data-type=anzhiyu] #nav,
-  body[data-type=anzhiyu] #scroll-down,
-  body[data-type=anzhiyu] #site-info {
-    -webkit-animation: jinghuashang_scale 2.2s cubic-bezier(0.6, 0.1, 0.25, 1) 0.5s 1 backwards;
-    -moz-animation: jinghuashang_scale 2.2s cubic-bezier(0.6, 0.1, 0.25, 1) 0.5s 1 backwards;
-    -o-animation: jinghuashang_scale 2.2s cubic-bezier(0.6, 0.1, 0.25, 1) 0.5s 1 backwards;
-    -ms-animation: jinghuashang_scale 2.2s cubic-bezier(0.6, 0.1, 0.25, 1) 0.5s 1 backwards;
-    animation: jinghuashang_scale 2.2s cubic-bezier(0.6, 0.1, 0.25, 1) 0.5s 1 backwards;
+
+  #page-header.full_page.expand-to-full,.pl-container.expand-to-full {
+    height: 50vh!important
   }
-  @media screen and (max-width: 768px) {
-    #jinghuashang-home_bg {
-      position: absolute !important;
-      display: block !important;
-    }
+  .pl-container {
+      will-change: opacity,transform,filter;
+      opacity: calc(1 - var(--process) * 1)!important;
+      transform: scale(calc(1 + var(--process) * .1));
+      filter: blur(calc(var(--process) * 10px));
   }
-  #jinghuashang-home_bg {
+}
+
+.pl-container {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     position: fixed;
-    z-index: -999;
+    z-index: -2;
     overflow: hidden;
-    display: none;
-    -webkit-animation: jinghuashang_blur-to-clear 2.5s cubic-bezier(0.6, 0.25, 0.25, 1) 0s 1 backwards, jinghuashang_scale 2.2s cubic-bezier(0.6, 0.1, 0.25, 1) 0.5s 1 backwards;
-    -moz-animation: jinghuashang_blur-to-clear 2.5s cubic-bezier(0.6, 0.25, 0.25, 1) 0s 1 backwards, jinghuashang_scale 2.2s cubic-bezier(0.6, 0.1, 0.25, 1) 0.5s 1 backwards;
-    -o-animation: jinghuashang_blur-to-clear 2.5s cubic-bezier(0.6, 0.25, 0.25, 1) 0s 1 backwards, jinghuashang_scale 2.2s cubic-bezier(0.6, 0.1, 0.25, 1) 0.5s 1 backwards;
-    -ms-animation: jinghuashang_blur-to-clear 2.5s cubic-bezier(0.6, 0.25, 0.25, 1) 0s 1 backwards, jinghuashang_scale 2.2s cubic-bezier(0.6, 0.1, 0.25, 1) 0.5s 1 backwards;
-    animation: jinghuashang_blur-to-clear 2.5s cubic-bezier(0.6, 0.25, 0.25, 1) 0s 1 backwards, jinghuashang_scale 2.2s cubic-bezier(0.6, 0.1, 0.25, 1) 0.5s 1 backwards;
+    will-change: transform; /* 添加性能优化 */
+    animation: blur-to-clear 2.5s cubic-bezier(.6,.25,.25,1) 0s 1 backwards,scale 2.2s cubic-bezier(.6,.1,.25,1) .5s 1 backwards;
   }
-  #jinghuashang-home_bg #jinghuashang-home_img {
-    display: block;
+
+  .pl-img {
     width: 100%;
     height: 100%;
     position: absolute;
-    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAKUlEQVQImU3IMREAIAgAwJfNkQCEsH8cijjpMf6vnXlQaIiJFx+omEBfmqIEZLe2jzcAAAAASUVORK5CYII=");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
-    will-change: transform, opacity;
-    opacity: 1;
-    -ms-filter: none;
-    filter: none;
-    -webkit-transition: opacity 1s;
-    -moz-transition: opacity 1s;
-    -o-transition: opacity 1s;
-    -ms-transition: opacity 1s;
+    opacity: .1;
     transition: opacity 1s;
+    will-change: transform,opacity
   }
-  video#Top_Video {
+  .pl-video.pl-visible {
+    display: block
+}
+  @keyframes blur-to-clear {
+    0% {
+      filter: blur(50px);
+      opacity: 1;
+    }
+    100% {
+      filter: blur(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes scale {
+    0% {
+      transform: scale(1.5) translateZ(0);
+      opacity: 0;
+    }
+    to {
+      transform: scale(1) translateZ(0);
+      opacity: 1;
+    }
+  }
+  .pl-video {
     position: absolute;
     top: 0;
     left: 0;
@@ -69,140 +79,14 @@
     height: 100%;
     object-fit: cover;
     z-index: 0;
-    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAKUlEQVQImU3IMREAIAgAwJfNkQCEsH8cijjpMf6vnXlQaIiJFx+omEBfmqIEZLe2jzcAAAAASUVORK5CYII=");
+    background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAQAAAAECAYAAACp8Z5+AAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAKUlEQVQImU3IMREAIAgAwJfNkQCEsH8cijjpMf6vnXlQaIiJFx+omEBfmqIEZLe2jzcAAAAASUVORK5CYII=);
+ }
+
+  .pl-visible {
+    opacity: 1;
   }
-  video#Top_Video::-webkit-media-controls-enclosure {
-    display: none !important;
-  }
-  [data-theme=dark] #page-header::before {
-    background: none !important;
-  }
-  [data-theme=dark] #jinghuashang-home_bg:not(.Top_Video)::after {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0,0,0,0.3);
-    content: '';
-    z-index: 2;
-    pointer-events: none;
-  }
-  @-moz-keyframes jinghuashang_blur-to-clear {
-    0% {
-      filter: blur(50px);
-    }
-    100% {
-      filter: blur(0);
-    }
-  }
-  @-webkit-keyframes jinghuashang_blur-to-clear {
-    0% {
-      filter: blur(50px);
-    }
-    100% {
-      filter: blur(0);
-    }
-  }
-  @-o-keyframes jinghuashang_blur-to-clear {
-    0% {
-      filter: blur(50px);
-    }
-    100% {
-      filter: blur(0);
-    }
-  }
-  @keyframes jinghuashang_blur-to-clear {
-    0% {
-      filter: blur(50px);
-    }
-    100% {
-      filter: blur(0);
-    }
-  }
-  @-moz-keyframes jinghuashang_scale {
-    0% {
-      -webkit-transform: scale(1.65);
-      -moz-transform: scale(1.65);
-      -o-transform: scale(1.65);
-      -ms-transform: scale(1.65);
-      transform: scale(1.65);
-      opacity: 0;
-      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-      filter: alpha(opacity=0);
-    }
-    100% {
-      -webkit-transform: none;
-      -moz-transform: none;
-      -o-transform: none;
-      -ms-transform: none;
-      transform: none;
-      opacity: 1;
-      -ms-filter: none;
-      filter: none;
-    }
-  }
-  @-webkit-keyframes jinghuashang_scale {
-    0% {
-      -webkit-transform: scale(1.65);
-      -moz-transform: scale(1.65);
-      -o-transform: scale(1.65);
-      -ms-transform: scale(1.65);
-      transform: scale(1.65);
-      opacity: 0;
-      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-      filter: alpha(opacity=0);
-    }
-    100% {
-      -webkit-transform: none;
-      -moz-transform: none;
-      -o-transform: none;
-      -ms-transform: none;
-      transform: none;
-      opacity: 1;
-      -ms-filter: none;
-      filter: none;
-    }
-  }
-  @-o-keyframes jinghuashang_scale {
-    0% {
-      -webkit-transform: scale(1.65);
-      -moz-transform: scale(1.65);
-      -o-transform: scale(1.65);
-      -ms-transform: scale(1.65);
-      transform: scale(1.65);
-      opacity: 0;
-      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-      filter: alpha(opacity=0);
-    }
-    100% {
-      -webkit-transform: none;
-      -moz-transform: none;
-      -o-transform: none;
-      -ms-transform: none;
-      transform: none;
-      opacity: 1;
-      -ms-filter: none;
-      filter: none;
-    }
-  }
-  @keyframes jinghuashang_scale {
-    0% {
-      -webkit-transform: scale(1.65);
-      -moz-transform: scale(1.65);
-      -o-transform: scale(1.65);
-      -ms-transform: scale(1.65);
-      transform: scale(1.65);
-      opacity: 0;
-      -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-      filter: alpha(opacity=0);
-    }
-    100% {
-      -webkit-transform: none;
-      -moz-transform: none;
-      -o-transform: none;
-      -ms-transform: none;
-      transform: none;
-      opacity: 1;
-      -ms-filter: none;
-      filter: none;
-    }
+  
+  .pl-blur {
+    /* 小图锯齿多，增加高斯模糊 */
+    filter: blur(50px);
   }
