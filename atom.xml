@@ -6,7 +6,7 @@
   <link href="https://jinghuashang.cn/atom.xml" rel="self"/>
   
   <link href="https://jinghuashang.cn/"/>
-  <updated>2023-09-17T07:39:07.431Z</updated>
+  <updated>2024-03-26T14:54:34.849Z</updated>
   <id>https://jinghuashang.cn/</id>
   
   <author>
@@ -15,6 +15,40 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>苹果CMS搭建教程[1Panel环境版]</title>
+    <link href="https://jinghuashang.cn/posts/a3f04f84.html"/>
+    <id>https://jinghuashang.cn/posts/a3f04f84.html</id>
+    <published>2024-03-26T14:51:47.000Z</published>
+    <updated>2024-03-26T14:54:34.849Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="苹果CMS搭建教程-1Panel环境版"><a href="#苹果CMS搭建教程-1Panel环境版" class="headerlink" title="苹果CMS搭建教程[1Panel环境版]"></a>苹果CMS搭建教程[1Panel环境版]</h1><h2 id="苹果CMS是什么"><a href="#苹果CMS是什么" class="headerlink" title="苹果CMS是什么"></a>苹果CMS是什么</h2>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;苹果CMS搭建教程-1Panel环境版&quot;&gt;&lt;a href=&quot;#苹果CMS搭建教程-1Panel环境版&quot; class=&quot;headerlink&quot; title=&quot;苹果CMS搭建教程[1Panel环境版]&quot;&gt;&lt;/a&gt;苹果CMS搭建教程[1Panel环境版]&lt;/h1&gt;&lt;h2</summary>
+      
+    
+    
+    
+    <category term="教程" scheme="https://jinghuashang.cn/categories/%E6%95%99%E7%A8%8B/"/>
+    
+    
+    <category term="MACCMS" scheme="https://jinghuashang.cn/tags/MACCMS/"/>
+    
+    <category term="1Panel" scheme="https://jinghuashang.cn/tags/1Panel/"/>
+    
+    <category term="openresty" scheme="https://jinghuashang.cn/tags/openresty/"/>
+    
+    <category term="php" scheme="https://jinghuashang.cn/tags/php/"/>
+    
+    <category term="mysql" scheme="https://jinghuashang.cn/tags/mysql/"/>
+    
+    <category term="redis" scheme="https://jinghuashang.cn/tags/redis/"/>
+    
+  </entry>
   
   <entry>
     <title>安知鱼主题标签 Tag Plugins</title>
