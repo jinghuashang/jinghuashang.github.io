@@ -78,10 +78,10 @@
   };
   
   const config = {
-    smallSrc: 'https://imgapi.jinghuashang.cn/random', // 小图链接 尽可能配置小于100k的图片
-    largeSrc: 'https://imgapi.jinghuashang.cn/random', // 大图链接 最终显示的图片
-    mobileSmallSrc: 'https://imgapi.jinghuashang.cn/random', // 手机端小图链接 尽可能配置小于100k的图片
-    mobileLargeSrc: 'https://imgapi.jinghuashang.cn/random', // 手机端大图链接 最终显示的图片
+    smallSrc: 'https://imgapi.jinghuashang.cn/random?sort=hp', // 小图链接 尽可能配置小于100k的图片
+    largeSrc: 'https://imgapi.jinghuashang.cn/random?sort=hp', // 大图链接 最终显示的图片
+    mobileSmallSrc: 'https://imgapi.jinghuashang.cn/random?sort=sp', // 手机端小图链接 尽可能配置小于100k的图片
+    mobileLargeSrc: 'https://imgapi.jinghuashang.cn/random?sort=sp', // 手机端大图链接 最终显示的图片
     enableRoutes: ['/'],
     };
   
