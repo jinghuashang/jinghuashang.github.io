@@ -83,7 +83,47 @@
   
   <link rel="stylesheet" href="/css/custom.css">
   
-<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Jinghuashang" type="application/atom+xml">
+<!-- hexo injector head_end start --><style>
+/* ---- 堆叠相册:文章版 ---- */
+.fp-stack{width:var(--fp-stack-w,480px);max-width:100%;margin:1.6em auto}
+.fp-stack__card{display:block;position:relative}
+.fp-stack__card--h{width:480px;height:320px}
+.fp-stack__card--v{width:320px;height:480px}
+.fp-stack__card+.fp-stack__card{margin-top:10px}
+.fp-img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:var(--paper-shadow);background:var(--paper);border:1px solid var(--line)}
+.fp-tape{display:none}
+.fp-stack.is-stacked{position:relative;height:var(--fp-stack-h,480px)}
+.fp-stack a:has(> .fp-img),.fp-stacknav__deck a:has(> .fp-img){position:static!important;display:block;width:100%;height:100%}
+.fp-stack.is-stacked .fp-stack__card{position:absolute;left:50%;top:50%;width:320px;height:480px;margin:0;cursor:pointer;transition:transform .38s ease,width .3s ease,height .3s ease;will-change:transform;user-select:none;-webkit-user-select:none}
+.fp-stack.is-stacked .fp-stack__card--h{width:480px;height:320px}
+.fp-stack.is-stacked .fp-stack__card--v{width:320px;height:480px}
+.fp-stack.is-stacked .fp-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(3px) saturate(.85);transition:transform .38s ease,filter .3s ease}
+.fp-stack.is-stacked .fp-stack__card.is-top .fp-img{filter:none}
+.fp-stack.is-stacked .fp-stack__card.is-top:hover .fp-img{filter:brightness(1.05)}
+.fp-stack.is-stacked .fp-stack__card.is-taking{transition:transform .26s ease;z-index:9999}
+.fp-stack.is-stacked .fp-stack__card.is-taking .fp-img{filter:none;box-shadow:var(--shadow);transition:transform .26s ease,filter .3s ease}
+.fp-stack.is-stacked .fp-tape{display:block;position:absolute;top:-9px;left:50%;width:70px;height:19px;z-index:3;transform:translateX(-50%) rotate(-4deg);background-color:var(--tape-yellow);background-image:var(--tape-stripes);filter:saturate(.88);box-shadow:0 1px 3px rgba(var(--paper-shadow-rgb),.18)}
+.fp-stack.is-stacked .fp-stack__card:nth-child(odd) .fp-tape{background-color:var(--tape-pink);transform:translateX(-50%) rotate(5deg)}
+/* ---- 堆叠相册:关于页番剧版 ---- */
+.fp-stacknav{display:flex;align-items:center;gap:24px;margin:1.6em 0;flex-wrap:wrap;flex-direction:row-reverse;justify-content:space-between}
+.fp-stacknav__deck{width:var(--fp-stack-w,160px);max-width:100%;flex:0 0 auto}
+.fp-stacknav__card{display:block;position:relative}
+.fp-stacknav__card--h{width:160px;height:107px}
+.fp-stacknav__card--v{width:120px;height:160px}
+.fp-stacknav__card+.fp-stacknav__card{margin-top:10px}
+.fp-stacknav__deck.is-stacked{position:relative;height:var(--fp-stack-h,160px)}
+.fp-stacknav__deck.is-stacked .fp-stacknav__card{position:absolute;left:50%;top:50%;width:120px;height:160px;margin:0;transition:transform .38s ease,width .3s ease,height .3s ease;will-change:transform;user-select:none;-webkit-user-select:none}
+.fp-stacknav__deck.is-stacked .fp-stacknav__card--h{width:160px;height:107px}
+.fp-stacknav__deck.is-stacked .fp-stacknav__card--v{width:120px;height:160px}
+.fp-stacknav__deck.is-stacked .fp-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(2.5px) saturate(.85);transition:transform .38s ease,filter .3s ease}
+.fp-stacknav__deck.is-stacked .fp-stacknav__card.is-top .fp-img{filter:none}
+.fp-stacknav__deck.is-stacked .fp-tape{display:block;position:absolute;top:-8px;left:50%;width:54px;height:15px;z-index:3;transform:translateX(-50%) rotate(-4deg);background-color:var(--tape-yellow);background-image:var(--tape-stripes);filter:saturate(.88);box-shadow:0 1px 3px rgba(var(--paper-shadow-rgb),.18)}
+.fp-stacknav__deck.is-stacked .fp-stacknav__card:nth-child(odd) .fp-tape{background-color:var(--tape-blue);transform:translateX(-50%) rotate(6deg)}
+.article-content .fp-stacknav__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;min-width:200px}
+.fp-stacknav__list a{display:block;color:inherit;text-decoration:none;padding:4px 0;border-radius:6px;transition:background .2s ease,color .2s ease}
+.fp-stacknav__list a:hover{background:var(--color-accent-soft);color:var(--color-accent-strong)}
+@media (max-width:480px){.fp-stacknav{justify-content:center}.fp-stacknav__list{min-width:0}}
+</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Jinghuashang" type="application/atom+xml">
 </head>
 
 <body
@@ -392,7 +432,7 @@
         
           
             <a class="site-info__item" href="/tags/">
-              <strong>41</strong>
+              <strong>42</strong>
               <span>标签</span>
             </a>
           
@@ -1005,26 +1045,10 @@
           </span>
         </a>
       
-        <a class="related-card" href="/posts/de31.html">
-          <span class="related-card__thumb">
-            
-<div class="paper-thumb paper-thumb-1 paper-thumb--cover">
-  
-    <img class="paper-thumb__img" src="https://img.jinghuashang.cn/cover/a.png" alt="misskey" loading="lazy" referrerpolicy="no-referrer">
-  
-</div>
-
-          </span>
-          <span class="related-card__body">
-            <strong class="related-card__title">misskey</strong>
-            <em class="related-card__date">2022-10-22</em>
-          </span>
-        </a>
-      
         <a class="related-card" href="/posts/943e.html">
           <span class="related-card__thumb">
             
-<div class="paper-thumb paper-thumb-2 paper-thumb--cover">
+<div class="paper-thumb paper-thumb-1 paper-thumb--cover">
   
     <img class="paper-thumb__img" src="https://img.jinghuashang.cn/cover/8808.jpg" alt="Redmi K50" loading="lazy" referrerpolicy="no-referrer">
   
@@ -1040,7 +1064,7 @@
         <a class="related-card" href="/posts/a2cc.html">
           <span class="related-card__thumb">
             
-<div class="paper-thumb paper-thumb-0 paper-thumb--cover">
+<div class="paper-thumb paper-thumb-2 paper-thumb--cover">
   
     <img class="paper-thumb__img" src="https://img.jinghuashang.cn/blog/800.jpg" alt="Arknights" loading="lazy" referrerpolicy="no-referrer">
   
@@ -1210,5 +1234,155 @@ window.addEventListener('load', function () {
 <script src="/js/main.js"></script>
 
   
-</body>
+<!-- hexo injector body_end start --><script>
+(function(){
+  // 主题会把文章图片包进 <a data-fancybox> 用于点击放大;
+  // 堆叠区点击要用于翻牌,解除 fancybox 与链接跳转
+  function unfancy(card){
+    var a=card.querySelector('a');
+    if(!a)return;
+    a.removeAttribute('data-fancybox');
+    a.removeAttribute('data-fancybox-group');
+    a.addEventListener('click',function(e){e.preventDefault();});
+  }
+  // 方向:用户填了 data-orient 用之;没填按图片实际比例
+  function applyOrient(card,img,base){
+    var o=card.getAttribute('data-orient');
+    if(!o)o=(img.naturalWidth||0)>(img.naturalHeight||0)?'h':'v';
+    card.classList.toggle(base+'--h',o==='h');
+    card.classList.toggle(base+'--v',o==='v');
+  }
+  function init(stack,cardSel){
+    var cards=[].slice.call(stack.querySelectorAll(cardSel));
+    if(cards.length<2)return;
+    stack.classList.add('is-stacked');
+    var n=cards.length;
+    var base=cardSel.slice(1);
+    var animating=false;
+    for(var k=0;k<n;k++){
+      unfancy(cards[k]);
+      (function(c){
+        var img=c.querySelector('img');
+        if(img.complete)applyOrient(c,img,base);
+        else img.addEventListener('load',function(){applyOrient(c,img,base);layout();});
+      })(cards[k]);
+    }
+    function layout(){
+      for(var i=0;i<n;i++){
+        var c=cards[i];
+        var off=i*10;
+        var rot=(i%2===0?1:-1)*Math.min(i*1.6,6);
+        c.style.transform='translate(-50%,-50%) translateY('+off+'px) rotate('+rot+'deg)';
+        c.style.zIndex=String(n-i);
+        c.classList.toggle('is-top',i===0);
+      }
+    }
+    function next(){
+      if(animating)return;
+      animating=true;
+      var top=cards[0];
+      top.classList.add('is-taking');
+      top.style.transform='translate(-50%,-50%) translateY(-46px) rotate(0deg) scale(1.05)';
+      var timer;
+      var done=function(e){
+        if(e&&e.propertyName!=='transform')return;
+        top.removeEventListener('transitionend',done);
+        clearTimeout(timer);
+        top.classList.remove('is-taking');
+        cards.push(cards.shift());
+        layout();
+        animating=false;
+      };
+      top.addEventListener('transitionend',done);
+      timer=setTimeout(done,700); // 兜底:防 transitionend 丢失
+    }
+    stack.addEventListener('click',function(e){
+      var card=e.target&&e.target.closest?e.target.closest(cardSel):null;
+      if(!card||card!==cards[0])return;
+      if(!card.classList.contains('is-taking'))next();
+    });
+    layout();
+  }
+  function initNav(nav){
+    var deck=nav.querySelector('.fp-stacknav__deck');
+    if(!deck)return;
+    var cards=[].slice.call(deck.querySelectorAll('.fp-stacknav__card'));
+    if(cards.length<2)return;
+    var items=[].slice.call(nav.querySelectorAll('.fp-stacknav__list [data-idx]'));
+    if(items.length!==cards.length)return;
+    for(var k=0;k<cards.length;k++)unfancy(cards[k]);
+    deck.classList.add('is-stacked');
+    var n=cards.length;
+    var order=cards.slice();
+    function layout(){
+      for(var i=0;i<n;i++){
+        var c=cards[i];
+        var off=i*6;
+        var rot=(i%2===0?1:-1)*Math.min(i*1.2,4);
+        c.style.transform='translate(-50%,-50%) translateY('+off+'px) rotate('+rot+'deg)';
+        c.style.zIndex=String(n-i);
+        c.classList.toggle('is-top',i===0);
+      }
+    }
+    items.forEach(function(a){
+      var idx=parseInt(a.getAttribute('data-idx'),10);
+      if(isNaN(idx))return;
+      a.addEventListener('mouseenter',function(){
+        if(cards[0]===cards[idx])return;
+        var card=cards.splice(idx,1)[0];
+        cards.unshift(card);
+        layout();
+      });
+      a.addEventListener('mouseleave',function(){
+        cards.length=0;
+        for(var j=0;j<order.length;j++)cards.push(order[j]);
+        layout();
+      });
+    });
+    layout();
+  }
+  function bindImgRetry(){
+    // 兜底:图片加载失败(如 CDN 边缘缓存了旧 403/浏览器缓存)时,
+    // 以 no-referrer 重试一次,自愈防盗链类问题
+    var imgs=document.querySelectorAll('.fp-img');
+    for(var i=0;i<imgs.length;i++){
+      var img=imgs[i];
+      if(img.getAttribute('data-retried'))continue;
+      img.setAttribute('data-retried','1');
+      img.addEventListener('error',function(){
+        if(this.getAttribute('data-retry'))return;
+        this.setAttribute('data-retry','1');
+        this.setAttribute('referrerpolicy','no-referrer');
+        var src=this.getAttribute('src');
+        this.setAttribute('src','');
+        this.setAttribute('src',src);
+      });
+    }
+  }
+  function fixHotlink(){
+    // B 站图床(i0.hdslb.com)防盗链:拒绝带 Referer 的请求,重试需 no-referrer
+    var imgs=document.querySelectorAll('img[src*="hdslb.com"],img[src*="hdslb.net"]');
+    for(var i=0;i<imgs.length;i++){
+      var img=imgs[i];
+      if(img.getAttribute('referrerpolicy')==='no-referrer')continue;
+      img.setAttribute('referrerpolicy','no-referrer');
+      var src=img.getAttribute('src');
+      if(img.complete&&img.naturalWidth===0&&src){
+        img.setAttribute('src','');
+        img.setAttribute('src',src);
+      }
+    }
+  }
+  function boot(){
+    var s=document.querySelectorAll('.fp-stack');
+    for(var i=0;i<s.length;i++)init(s[i],'.fp-stack__card');
+    var ns=document.querySelectorAll('.fp-stacknav');
+    for(var j=0;j<ns.length;j++)initNav(ns[j]);
+    bindImgRetry();
+    fixHotlink();
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',boot);}
+  else{boot();}
+})();
+</script><!-- hexo injector body_end end --></body>
 </html>
