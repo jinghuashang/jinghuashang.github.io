@@ -123,7 +123,27 @@
 .article-content .fp-stacknav__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;min-width:200px}
 .fp-stacknav__list a{display:block;color:inherit;text-decoration:none;padding:4px 0;border-radius:6px;transition:background .2s ease,color .2s ease}
 .fp-stacknav__list a:hover{background:var(--color-accent-soft);color:var(--color-accent-strong)}
-@media (max-width:480px){.fp-stacknav{justify-content:center}.fp-stacknav__list{min-width:0}}
+@media (max-width:480px){
+  .fp-stacknav{
+    flex-direction:column;
+    flex-wrap:nowrap;
+    align-items:center;
+    justify-content:flex-start;
+    gap:16px;
+  }
+  .fp-stacknav__deck{
+    width:160px;
+    max-width:100%;
+  }
+  .article-content .fp-stacknav__list{
+    width:100%;
+    min-width:0;
+    text-align:center;
+  }
+  .fp-stacknav__list a{
+    overflow-wrap:anywhere;
+  }
+}
 </style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Jinghuashang" type="application/atom+xml">
 </head>
 
@@ -794,18 +814,18 @@
 
   <nav class="article-actions">
     
-      <a class="article-action article-action--prev" href="/posts/b96d.html">
+      <a class="article-action article-action--prev" href="/posts/cd7c.html">
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-left flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-arrow-left"></use></svg>
 
         <span class="action-label">上一篇</span>
-        <span class="action-title">Arch Liunx (Legacy BIOS)</span>
+        <span class="action-title">Minecraft Server</span>
       </a>
     
     
-      <a class="article-action article-action--next" href="/posts/a2cc.html">
+      <a class="article-action article-action--next" href="/posts/b96d.html">
         <span class="action-label">下一篇</span>
-        <span class="action-title">Arknights</span>
+        <span class="action-title">Arch Liunx (Legacy BIOS)</span>
         
 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-arrow-right"></use></svg>
 
@@ -1082,6 +1102,8 @@ window.addEventListener('load', function () {
     var n=cards.length;
     var base=cardSel.slice(1);
     var animating=false;
+    var scale=1;
+    var baseHeight=parseFloat(getComputedStyle(stack).getPropertyValue('--fp-stack-h'))||480;
     for(var k=0;k<n;k++){
       unfancy(cards[k]);
       (function(c){
@@ -1090,12 +1112,29 @@ window.addEventListener('load', function () {
         else img.addEventListener('load',function(){applyOrient(c,img,base);layout();});
       })(cards[k]);
     }
+    function cardSize(c){
+      return c.classList.contains(base+'--h')?{width:480,height:320}:{width:320,height:480};
+    }
+    function updateScale(){
+      var maxVisualWidth=0;
+      for(var i=0;i<n;i++){
+        var size=cardSize(cards[i]);
+        var angle=Math.min(i*1.6,6)*Math.PI/180;
+        var visualWidth=Math.abs(size.width*Math.cos(angle))+Math.abs(size.height*Math.sin(angle));
+        maxVisualWidth=Math.max(maxVisualWidth,visualWidth);
+      }
+      var available=stack.clientWidth;
+      var isMobile=window.matchMedia?window.matchMedia('(max-width:480px)').matches:window.innerWidth<=480;
+      scale=isMobile&&available>0?Math.min(1,available/maxVisualWidth):1;
+      stack.style.height=(baseHeight*scale)+'px';
+    }
     function layout(){
+      updateScale();
       for(var i=0;i<n;i++){
         var c=cards[i];
-        var off=i*10;
+        var off=i*10*scale;
         var rot=(i%2===0?1:-1)*Math.min(i*1.6,6);
-        c.style.transform='translate(-50%,-50%) translateY('+off+'px) rotate('+rot+'deg)';
+        c.style.transform='translate(-50%,-50%) translateY('+off+'px) rotate('+rot+'deg) scale('+scale+')';
         c.style.zIndex=String(n-i);
         c.classList.toggle('is-top',i===0);
       }
@@ -1105,7 +1144,10 @@ window.addEventListener('load', function () {
       animating=true;
       var top=cards[0];
       top.classList.add('is-taking');
-      top.style.transform='translate(-50%,-50%) translateY(-46px) rotate(0deg) scale(1.05)';
+      var takingScale=scale*1.05;
+      var isMobile=window.matchMedia?window.matchMedia('(max-width:480px)').matches:window.innerWidth<=480;
+      if(isMobile)takingScale=Math.min(takingScale,stack.clientWidth/cardSize(top).width);
+      top.style.transform='translate(-50%,-50%) translateY('+(-46*scale)+'px) rotate(0deg) scale('+takingScale+')';
       var timer;
       var done=function(e){
         if(e&&e.propertyName!=='transform')return;
@@ -1124,6 +1166,7 @@ window.addEventListener('load', function () {
       if(!card||card!==cards[0])return;
       if(!card.classList.contains('is-taking'))next();
     });
+    window.addEventListener('resize',function(){if(!animating)layout();});
     layout();
   }
   function initNav(nav){
@@ -1137,7 +1180,13 @@ window.addEventListener('load', function () {
     deck.classList.add('is-stacked');
     var n=cards.length;
     var order=cards.slice();
+    var baseHeight=parseFloat(getComputedStyle(deck).getPropertyValue('--fp-stack-h'))||160;
+    function isMobile(){
+      return window.matchMedia?window.matchMedia('(max-width:480px)').matches:window.innerWidth<=480;
+    }
     function layout(){
+      var mobile=isMobile();
+      deck.style.height=mobile?baseHeight+'px':'';
       for(var i=0;i<n;i++){
         var c=cards[i];
         var off=i*6;
@@ -1146,6 +1195,18 @@ window.addEventListener('load', function () {
         c.style.zIndex=String(n-i);
         c.classList.toggle('is-top',i===0);
       }
+      if(!mobile)return;
+      var maxRadius=baseHeight/2;
+      for(var j=0;j<n;j++){
+        var card=cards[j];
+        var cardWidth=card.classList.contains('fp-stacknav__card--h')?160:120;
+        var cardHeight=card.classList.contains('fp-stacknav__card--h')?107:160;
+        var angle=Math.min(j*1.2,4)*Math.PI/180;
+        var halfHeight=(Math.abs(cardHeight*Math.cos(angle))+Math.abs(cardWidth*Math.sin(angle)))/2;
+        var offset=j*6;
+        maxRadius=Math.max(maxRadius,offset+halfHeight,halfHeight-offset);
+      }
+      deck.style.height=(maxRadius*2)+'px';
     }
     items.forEach(function(a){
       var idx=parseInt(a.getAttribute('data-idx'),10);
@@ -1162,6 +1223,7 @@ window.addEventListener('load', function () {
         layout();
       });
     });
+    window.addEventListener('resize',layout);
     layout();
   }
   function bindImgRetry(){
