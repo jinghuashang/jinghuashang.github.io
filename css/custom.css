@@ -224,3 +224,62 @@
   font-style: normal;
   font-display: swap;  /* 关键：防止闪烁，先显示后备字体 */
 }
+
+/* ============== 定位欢迎卡片 ============== */
+/* 由 /js/welcome.js 在右侧栏资料卡下方插入；该脚本通过腾讯位置服务的
+   IP 定位接口获取访客归属地，Key 暴露在前端，请配置好域名白名单。 */
+
+.welcome-loc-card {
+  overflow: visible;
+}
+
+.welcome-loc-card::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  right: 18px;
+  width: 70px;
+  height: 20px;
+  background-color: var(--tape-blue);
+  background-image: var(--tape-stripes);
+  transform: rotate(-4deg);
+  z-index: 2;
+}
+
+.welcome-loc-card h2 {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.welcome-loc-card h2 .lucide {
+  width: 16px;
+  height: 16px;
+  color: var(--color-accent-strong);
+}
+
+.welcome-loc-card__info {
+  overflow: hidden;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.9;
+  word-break: break-word;
+}
+
+.welcome-loc-card__info b {
+  color: var(--color-accent-strong);
+  font-weight: 700;
+}
+
+.welcome-loc-card__info span {
+  display: inline-block;
+  margin-top: 2px;
+}
+
+.dark-mode .welcome-loc-card h2 .lucide,
+.dark-mode .welcome-loc-card__info b {
+  color: var(--color-accent-muted);
+}

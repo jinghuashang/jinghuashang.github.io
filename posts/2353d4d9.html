@@ -43,6 +43,17 @@
         document.documentElement.classList.add('dark-mode');
       }
     } catch (e) {}
+    // Reveal-on-scroll opts in from here so it is applied before first paint
+    // (no flash) and never applies without JS. If main.js never runs the
+    // observer, the timeout drops the class again so nothing stays hidden.
+    if ('IntersectionObserver' in window) {
+      document.documentElement.classList.add('reveal-ready');
+      setTimeout(function () {
+        if (!window.flatpaperRevealReady) {
+          document.documentElement.classList.remove('reveal-ready');
+        }
+      }, 2000);
+    }
   })();
 </script>
 
@@ -83,67 +94,7 @@
   
   <link rel="stylesheet" href="/css/custom.css">
   
-<!-- hexo injector head_end start --><style>
-/* ---- 堆叠相册:文章版 ---- */
-.fp-stack{width:var(--fp-stack-w,480px);max-width:100%;margin:1.6em auto}
-.fp-stack__card{display:block;position:relative}
-.fp-stack__card--h{width:480px;height:320px}
-.fp-stack__card--v{width:320px;height:480px}
-.fp-stack__card+.fp-stack__card{margin-top:10px}
-.fp-img{display:block;width:100%;height:auto;border-radius:10px;box-shadow:var(--paper-shadow);background:var(--paper);border:1px solid var(--line)}
-.fp-tape{display:none}
-.fp-stack.is-stacked{position:relative;height:var(--fp-stack-h,480px)}
-.fp-stack a:has(> .fp-img),.fp-stacknav__deck a:has(> .fp-img){position:static!important;display:block;width:100%;height:100%}
-.fp-stack.is-stacked .fp-stack__card{position:absolute;left:50%;top:50%;width:320px;height:480px;margin:0;cursor:pointer;transition:transform .38s ease,width .3s ease,height .3s ease;will-change:transform;user-select:none;-webkit-user-select:none}
-.fp-stack.is-stacked .fp-stack__card--h{width:480px;height:320px}
-.fp-stack.is-stacked .fp-stack__card--v{width:320px;height:480px}
-.fp-stack.is-stacked .fp-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(3px) saturate(.85);transition:transform .38s ease,filter .3s ease}
-.fp-stack.is-stacked .fp-stack__card.is-top .fp-img{filter:none}
-.fp-stack.is-stacked .fp-stack__card.is-top:hover .fp-img{filter:brightness(1.05)}
-.fp-stack.is-stacked .fp-stack__card.is-taking{transition:transform .26s ease;z-index:9999}
-.fp-stack.is-stacked .fp-stack__card.is-taking .fp-img{filter:none;box-shadow:var(--shadow);transition:transform .26s ease,filter .3s ease}
-.fp-stack.is-stacked .fp-tape{display:block;position:absolute;top:-9px;left:50%;width:70px;height:19px;z-index:3;transform:translateX(-50%) rotate(-4deg);background-color:var(--tape-yellow);background-image:var(--tape-stripes);filter:saturate(.88);box-shadow:0 1px 3px rgba(var(--paper-shadow-rgb),.18)}
-.fp-stack.is-stacked .fp-stack__card:nth-child(odd) .fp-tape{background-color:var(--tape-pink);transform:translateX(-50%) rotate(5deg)}
-/* ---- 堆叠相册:关于页番剧版 ---- */
-.fp-stacknav{display:flex;align-items:center;gap:24px;margin:1.6em 0;flex-wrap:wrap;flex-direction:row-reverse;justify-content:space-between}
-.fp-stacknav__deck{width:var(--fp-stack-w,160px);max-width:100%;flex:0 0 auto}
-.fp-stacknav__card{display:block;position:relative}
-.fp-stacknav__card--h{width:160px;height:107px}
-.fp-stacknav__card--v{width:120px;height:160px}
-.fp-stacknav__card+.fp-stacknav__card{margin-top:10px}
-.fp-stacknav__deck.is-stacked{position:relative;height:var(--fp-stack-h,160px)}
-.fp-stacknav__deck.is-stacked .fp-stacknav__card{position:absolute;left:50%;top:50%;width:120px;height:160px;margin:0;transition:transform .38s ease,width .3s ease,height .3s ease;will-change:transform;user-select:none;-webkit-user-select:none}
-.fp-stacknav__deck.is-stacked .fp-stacknav__card--h{width:160px;height:107px}
-.fp-stacknav__deck.is-stacked .fp-stacknav__card--v{width:120px;height:160px}
-.fp-stacknav__deck.is-stacked .fp-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(2.5px) saturate(.85);transition:transform .38s ease,filter .3s ease}
-.fp-stacknav__deck.is-stacked .fp-stacknav__card.is-top .fp-img{filter:none}
-.fp-stacknav__deck.is-stacked .fp-tape{display:block;position:absolute;top:-8px;left:50%;width:54px;height:15px;z-index:3;transform:translateX(-50%) rotate(-4deg);background-color:var(--tape-yellow);background-image:var(--tape-stripes);filter:saturate(.88);box-shadow:0 1px 3px rgba(var(--paper-shadow-rgb),.18)}
-.fp-stacknav__deck.is-stacked .fp-stacknav__card:nth-child(odd) .fp-tape{background-color:var(--tape-blue);transform:translateX(-50%) rotate(6deg)}
-.article-content .fp-stacknav__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px;min-width:200px}
-.fp-stacknav__list a{display:block;color:inherit;text-decoration:none;padding:4px 0;border-radius:6px;transition:background .2s ease,color .2s ease}
-.fp-stacknav__list a:hover{background:var(--color-accent-soft);color:var(--color-accent-strong)}
-@media (max-width:480px){
-  .fp-stacknav{
-    flex-direction:column;
-    flex-wrap:nowrap;
-    align-items:center;
-    justify-content:flex-start;
-    gap:16px;
-  }
-  .fp-stacknav__deck{
-    width:160px;
-    max-width:100%;
-  }
-  .article-content .fp-stacknav__list{
-    width:100%;
-    min-width:0;
-    text-align:center;
-  }
-  .fp-stacknav__list a{
-    overflow-wrap:anywhere;
-  }
-}
-</style><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Jinghuashang" type="application/atom+xml">
+<meta name="generator" content="Hexo 6.3.0"><link rel="alternate" href="/atom.xml" title="Jinghuashang" type="application/atom+xml">
 </head>
 
 <body
@@ -496,176 +447,6 @@
       
     </div>
   </section>
-
-  
-
-<section class="side-card welcome-loc-card" aria-label="欢迎来访">
-  <h2>
-<svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-id-card-lanyard flatpaper-icon flatpaper-icon--lucide" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-lucide-id-card-lanyard"></use></svg>
-欢迎来访</h2>
-  <div id="welcome-info" class="welcome-loc-card__info" aria-live="polite">定位中…</div>
-</section>
-<script>
-(function () {
-  var cfg = {
-    key: "AHDBZ-7PMRT-7C2XT-VW7ZG-3ZS6Z-UCFXR",
-    lng: parseFloat(105.43501),
-    lat: parseFloat(28.87875),
-    unit: "公里",
-    ipv6Text: "好复杂，咱看不懂~(ipv6)"
-  };
-  var el = document.getElementById('welcome-info');
-  if (!el) return;
-
-  var ipLocation = null;
-
-  // JSONP request without jQuery
-  function jsonp(url, cb) {
-    var cbName = 'flatpaperWelcomeCb' + Date.now() + Math.floor(Math.random() * 1e4);
-    window[cbName] = function (res) {
-      delete window[cbName];
-      cb(res);
-    };
-    var s = document.createElement('script');
-    s.src = url + (url.indexOf('?') > -1 ? '&' : '?') + 'callback=' + encodeURIComponent(cbName);
-    s.onerror = function () { delete window[cbName]; cb(null); };
-    document.body.appendChild(s);
-  }
-
-  function getDistance(e1, n1, e2, n2) {
-    var R = 6371;
-    var sin = Math.sin, cos = Math.cos, asin = Math.asin, PI = Math.PI, hypot = Math.hypot;
-    function getPoint(e, n) {
-      e *= PI / 180; n *= PI / 180;
-      return { x: cos(n) * cos(e), y: cos(n) * sin(e), z: sin(n) };
-    }
-    var a = getPoint(e1, n1);
-    var b = getPoint(e2, n2);
-    var c = hypot(a.x - b.x, a.y - b.y, a.z - b.z);
-    return Math.round(asin(c / 2) * 2 * R);
-  }
-
-  function showWelcome() {
-    if (!ipLocation || !ipLocation.result) return;
-    var ad = ipLocation.result.ad_info;
-    var dist = getDistance(cfg.lng, cfg.lat, ipLocation.result.location.lng, ipLocation.result.location.lat);
-    var pos = ad.nation;
-    var ip = ipLocation.result.ip;
-    var posdesc = '';
-
-    switch (ad.nation) {
-      case '日本': posdesc = 'よろしく，一起去看樱花吗'; break;
-      case '美国': posdesc = 'Let us live in peace!'; break;
-      case '英国': posdesc = '想同你一起夜乘伦敦眼'; break;
-      case '俄罗斯': posdesc = '干了这瓶伏特加！'; break;
-      case '法国': posdesc = "C'est La Vie"; break;
-      case '德国': posdesc = 'Die Zeit verging im Fluge.'; break;
-      case '澳大利亚': posdesc = '一起去大堡礁吧！'; break;
-      case '加拿大': posdesc = '拾起一片枫叶赠予你'; break;
-      case '中国':
-        pos = ad.province + ' ' + ad.city + ' ' + ad.district;
-        switch (ad.province) {
-          case '北京市': posdesc = '北——京——欢迎你~~~'; break;
-          case '天津市': posdesc = '讲段相声吧'; break;
-          case '河北省': posdesc = '山势巍巍成壁垒，天下雄关铁马金戈由此向，无限江山'; break;
-          case '山西省': posdesc = '展开坐具长三尺，已占山河五百余'; break;
-          case '内蒙古自治区': posdesc = '天苍苍，野茫茫，风吹草低见牛羊'; break;
-          case '辽宁省': posdesc = '我想吃烤鸡架！'; break;
-          case '吉林省': posdesc = '状元阁就是东北烧烤之王'; break;
-          case '黑龙江省': posdesc = '很喜欢哈尔滨大剧院'; break;
-          case '上海市': posdesc = '众所周知，中国只有两个城市'; break;
-          case '江苏省':
-            switch (ad.city) {
-              case '南京市': posdesc = '这是我挺想去的城市啦'; break;
-              case '苏州市': posdesc = '上有天堂，下有苏杭'; break;
-              default: posdesc = '散装是必须要散装的'; break;
-            }
-            break;
-          case '浙江省': posdesc = '东风渐绿西湖柳，雁已还人未南归'; break;
-          case '河南省':
-            switch (ad.city) {
-              case '郑州市': posdesc = '豫州之域，天地之中'; break;
-              case '南阳市': posdesc = '臣本布衣，躬耕于南阳此南阳非彼南阳！'; break;
-              case '驻马店市': posdesc = '峰峰有奇石，石石挟仙气嵖岈山的花很美哦！'; break;
-              case '开封市': posdesc = '刚正不阿包青天'; break;
-              case '洛阳市': posdesc = '洛阳牡丹甲天下'; break;
-              default: posdesc = '可否带我品尝河南烩面啦？'; break;
-            }
-            break;
-          case '安徽省': posdesc = '蚌埠住了，芜湖起飞'; break;
-          case '福建省': posdesc = '井邑白云间，岩城远带山'; break;
-          case '江西省': posdesc = '落霞与孤鹜齐飞，秋水共长天一色'; break;
-          case '山东省': posdesc = '遥望齐州九点烟，一泓海水杯中泻'; break;
-          case '湖北省':
-            switch (ad.city) {
-              case '黄冈市': posdesc = '红安将军县！辈出将才！'; break;
-              default: posdesc = '来碗热干面~'; break;
-            }
-            break;
-          case '湖南省': posdesc = '74751，长沙斯塔克'; break;
-          case '广东省':
-            switch (ad.city) {
-              case '广州市': posdesc = '看小蛮腰，喝早茶了嘛~'; break;
-              case '深圳市': posdesc = '今天你逛商场了嘛~'; break;
-              case '阳江市': posdesc = '阳春合水！博主家乡~ 欢迎来玩~'; break;
-              default: posdesc = '来两斤福建人~'; break;
-            }
-            break;
-          case '广西壮族自治区': posdesc = '桂林山水甲天下'; break;
-          case '海南省': posdesc = '朝观日出逐白浪，夕看云起收霞光'; break;
-          case '四川省': posdesc = '康康川妹子'; break;
-          case '贵州省': posdesc = '茅台，学生，再塞200'; break;
-          case '云南省': posdesc = '玉龙飞舞云缠绕，万仞冰川直耸天'; break;
-          case '西藏自治区': posdesc = '躺在茫茫草原上，仰望蓝天'; break;
-          case '陕西省': posdesc = '来份臊子面加馍'; break;
-          case '甘肃省': posdesc = '羌笛何须怨杨柳，春风不度玉门关'; break;
-          case '青海省': posdesc = '牛肉干和老酸奶都好好吃'; break;
-          case '宁夏回族自治区': posdesc = '大漠孤烟直，长河落日圆'; break;
-          case '新疆维吾尔自治区': posdesc = '驼铃古道丝绸路，胡马犹闻唐汉风'; break;
-          case '台湾省': posdesc = '我在这头，大陆在那头'; break;
-          case '香港特别行政区': posdesc = '永定贼有残留地鬼嚎，迎击光非岁玉'; break;
-          case '澳门特别行政区': posdesc = '性感荷官，在线发牌'; break;
-          default: posdesc = '带我去你的城市逛逛吧！'; break;
-        }
-        break;
-      default: posdesc = '带我去你的国家逛逛吧'; break;
-    }
-
-    var timeChange;
-    var hour = new Date().getHours();
-    if (hour >= 5 && hour < 11) timeChange = '<span>🌤️ 早上好，一日之计在于晨</span>';
-    else if (hour >= 11 && hour < 13) timeChange = '<span>☀️ 中午好，记得午休喔~</span>';
-    else if (hour >= 13 && hour < 17) timeChange = '<span>🕞 下午好，饮茶先啦！</span>';
-    else if (hour >= 17 && hour < 19) timeChange = '<span>🚶‍♂️ 即将下班，记得按时吃饭~</span>';
-    else if (hour >= 19 && hour < 24) timeChange = '<span>🌙 晚上好，夜生活嗨起来！</span>';
-    else timeChange = '夜深了，早点休息，少熬夜';
-
-    if (String(ip).indexOf(':') > -1) {
-      ip = '<br>' + cfg.ipv6Text;
-    }
-
-    el.innerHTML =
-      '欢迎来自 <b>' + pos + '</b> 的小友💖<br>' +
-      posdesc + '🍂<br>' +
-      '当前位置距博主约 <b>' + dist + '</b> ' + cfg.unit + '！<br>' +
-      '您的IP地址为：<b>' + ip + '</b><br>' +
-      timeChange + '<br>';
-  }
-
-  jsonp(
-    'https://apis.map.qq.com/ws/location/v1/ip?key=' + encodeURIComponent(cfg.key) + '&output=jsonp',
-    function (res) {
-      ipLocation = res;
-      if (!res || res.status !== 0 || !res.result) {
-        el.textContent = '定位失败';
-        return;
-      }
-      showWelcome();
-    }
-  );
-})();
-</script>
-
 
   
 
@@ -1038,10 +819,9 @@ window.addEventListener('load', function () {
 
   
 <footer class="site-footer">
-  <span class="site-footer__left">
-    © 2026 By Jinghuashang
+  <span class="site-footer__left">© 2026 By Jinghuashang
 
-<span class="site-footer__typed" id="footer-type-tips" aria-live="polite"></span>
+<span class="site-footer__typed" id="footer-type-tips"></span>
 <script>
 (function () {
   var el = document.getElementById("footer-type-tips");
@@ -1053,78 +833,114 @@ window.addEventListener('load', function () {
   var startDelay = 300;
   var typeSpeed = 150;
   var backSpeed = 50;
+  var cdn = "https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js";
+  var fromLabel = "出自";
 
-  function startTyped(strings) {
-    if (!effect) {
-      el.textContent = strings[0] || '';
-      return;
+  // One shared loader per page: footer and hero can both enable the
+  // typewriter, and they must not each request Typed.js.
+  var loader = window.flatpaperLoadTyped;
+  if (!loader) {
+    loader = window.flatpaperLoadTyped = function (src, done) {
+      var state = loader._state || (loader._state = { status: 0, waiting: [] });
+      if (typeof Typed !== 'undefined') { done(true); return; }
+      if (state.status === 2) { done(false); return; }
+      state.waiting.push(done);
+      if (state.status === 1) return;
+      state.status = 1;
+      var settled = false;
+      function settle(ok) {
+        if (settled) return;
+        settled = true;
+        state.status = ok ? 0 : 2;
+        var queue = state.waiting;
+        state.waiting = [];
+        for (var i = 0; i < queue.length; i++) queue[i](ok && typeof Typed !== 'undefined');
+      }
+      var s = document.createElement('script');
+      s.src = src;
+      s.async = true;
+      s.onload = function () { settle(true); };
+      // A failed CDN must not leave the caller waiting: onerror settles as a
+      // failure, and the timeout covers a request that never resolves at all.
+      s.onerror = function () { settle(false); };
+      setTimeout(function () { settle(false); }, 6000);
+      (document.body || document.documentElement).appendChild(s);
+    };
+  }
+
+  // Without Typed.js (disabled, blocked CDN or timeout) the first string is
+  // still shown as plain text, so the slot is never left empty.
+  function render(strings) {
+    var list = [];
+    for (var i = 0; i < strings.length; i++) {
+      if (strings[i] != null && String(strings[i]) !== '') list.push(String(strings[i]));
     }
-    if (typeof Typed === 'undefined') { setTimeout(function () { startTyped(strings); }, 150); return; }
-    new Typed(el, {
-      strings: strings,
-      startDelay: startDelay,
-      typeSpeed: typeSpeed,
-      backSpeed: backSpeed,
-      loop: loop
+    if (!list.length) return;
+    if (!effect) { el.textContent = list[0]; return; }
+    loader(cdn, function (ready) {
+      if (!ready) { el.textContent = list[0]; return; }
+      new Typed(el, {
+        strings: list,
+        startDelay: startDelay,
+        typeSpeed: typeSpeed,
+        backSpeed: backSpeed,
+        loop: loop
+      });
     });
   }
 
-  function loadScript(src, onload) {
+  function withQuote(quote, from) {
+    var strings = sub.slice();
+    if (quote) {
+      if (from) strings.unshift(fromLabel + ' ' + from);
+      strings.unshift(quote);
+    }
+    render(strings);
+  }
+
+  // Quote providers are plain <script> endpoints; a failure here only means
+  // falling back to the configured `sub` list.
+  function loadOnce(src, done) {
+    var settled = false;
+    function settle(ok) { if (!settled) { settled = true; done(ok); } }
     var s = document.createElement('script');
     s.src = src;
     s.async = true;
-    s.onload = onload;
-    s.onerror = onload;
-    document.body.appendChild(s);
+    s.onload = function () { settle(true); };
+    s.onerror = function () { settle(false); };
+    setTimeout(function () { settle(false); }, 6000);
+    (document.body || document.documentElement).appendChild(s);
   }
 
-  function run() {
-    if (source === 1) {
-      fetch('https://v1.hitokoto.cn').then(function (r) { return r.json(); }).then(function (data) {
-        var strings = sub.slice();
-        if (data && data.hitokoto) {
-          strings.unshift(data.hitokoto, '出自 ' + (data.from || ''));
-        }
-        startTyped(strings);
-      }).catch(function () { startTyped(sub); });
-    } else if (source === 2) {
-      loadScript('https://yijuzhan.com/api/word.php?m=js', function () {
-        var strings = sub.slice();
-        if (typeof str !== 'undefined' && str && str[0]) {
-          strings.unshift(str[0], '出自 ' + (str[1] || ''));
-        }
-        startTyped(strings);
+  if (source === 1) {
+    fetch('https://v1.hitokoto.cn')
+      .then(function (r) { return r.json(); })
+      .then(function (data) { withQuote(data && data.hitokoto, data && data.from); })
+      .catch(function () { render(sub); });
+  } else if (source === 2) {
+    loadOnce('https://yijuzhan.com/api/word.php?m=js', function (ok) {
+      if (ok && typeof str !== 'undefined' && str && str[0]) withQuote(str[0], str[1]);
+      else render(sub);
+    });
+  } else if (source === 3) {
+    loadOnce('https://sdk.jinrishici.com/v2/browser/jinrishici.js', function (ok) {
+      if (!ok || typeof jinrishici === 'undefined' || !jinrishici.load) { render(sub); return; }
+      jinrishici.load(function (result) {
+        withQuote(result && result.data && result.data.content, '');
       });
-    } else if (source === 3) {
-      loadScript('https://sdk.jinrishici.com/v2/browser/jinrishici.js', function () {
-        if (typeof jinrishici !== 'undefined' && jinrishici.load) {
-          jinrishici.load(function (result) {
-            var strings = sub.slice();
-            if (result && result.data && result.data.content) strings.unshift(result.data.content);
-            startTyped(strings);
-          });
-        } else {
-          startTyped(sub);
-        }
-      });
-    } else {
-      startTyped(sub);
-    }
-  }
-
-  if (typeof getScript === 'function') {
-    getScript("https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js").then(run);
+    });
   } else {
-    loadScript("https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js", run);
+    render(sub);
   }
+
 })();
 </script>
 
-  </span>
+</span>
   
     <span class="site-footer__right">
       
-        <span class="site-footer__row"><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">蜀ICP备2022023884号-1</a><span class="site-footer__separator"> · </span><a href="https://icp.gov.moe/?keyword=20240964" target="_blank" rel="noopener">萌ICP备20240964号</a><span class="site-footer__separator"> · </span><a href="https://github.com/Homulilly/hexo-theme-flatpaper" target="_blank" rel="noopener">Powered by Theme FlatPaper</a><span class="site-footer__separator"> · </span><a href="/copyright" class=" site-footer__icon-link" title="版权协议" aria-label="版权协议"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" fill="currentColor" class="lucide lucide-copyright flatpaper-icon flatpaper-icon--fa-regular" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-regular-copyright"></use></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 496 512" fill="currentColor" class="lucide lucide-creative-commons-by flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-creative-commons-by"></use></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 496 512" fill="currentColor" class="lucide lucide-creative-commons-nc flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-creative-commons-nc"></use></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 496 512" fill="currentColor" class="lucide lucide-creative-commons-nd flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-creative-commons-nd"></use></svg></a></span>
+        <span class="site-footer__row"><a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">蜀ICP备2022023884号-1</a><span class="site-footer__separator"> · </span><a href="https://icp.gov.moe/?keyword=20240964" target="_blank" rel="noopener">萌ICP备20240964号</a><span class="site-footer__separator"> · </span><a href="https://github.com/Homulilly/hexo-theme-flatpaper" target="_blank" rel="noopener">Powered by Theme FlatPaper</a><span class="site-footer__separator"> · </span><a href="/copyright" class="site-footer__icon-link" title="版权协议" aria-label="版权协议"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 512 512" fill="currentColor" class="lucide lucide-copyright flatpaper-icon flatpaper-icon--fa-regular" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-regular-copyright"></use></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 496 512" fill="currentColor" class="lucide lucide-creative-commons-by flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-creative-commons-by"></use></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 496 512" fill="currentColor" class="lucide lucide-creative-commons-nc flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-creative-commons-nc"></use></svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 496 512" fill="currentColor" class="lucide lucide-creative-commons-nd flatpaper-icon flatpaper-icon--fa-brands" aria-hidden="true"><use href="/icons.svg#flatpaper-icon-fa-brands-creative-commons-nd"></use></svg></a></span>
       
     </span>
   
@@ -1156,203 +972,13 @@ window.addEventListener('load', function () {
 </div>
 
   <script>
-  window.FLATPAPER_I18N = {"language":"zh-CN","common.posts":"文章","common.categories":"分类","common.tags":"标签","common.comments":"评论","common.share":"分享","common.page":"页面","common.archive":"归档","common.post_list":"文章列表","common.search_posts":"搜索文章","common.random_posts":"随机文章","common.reward":"赞赏","common.view_all":"查看全部","pagination.prev":"上一页","pagination.next":"下一页","pagination.post_pager":"文章分页","pagination.archive_pager":"归档分页","index.featured":"精选文章","index.pinned":"置顶","index.read_more":"阅读全文","index.previous_slide":"上一张","index.next_slide":"下一张","index.carousel_pagination":"轮播页码","index.carousel_slide":"第 %d 张","index.latest_posts":"最新文章","index.empty_posts":"还没有文章。创建第一篇文章后，这里会显示最新内容。","archive.title":"归档","archive.post_list":"文章列表","taxonomy.category_count":"%d 篇","taxonomy.empty_categories":"暂时还没有分类。","taxonomy.empty_tags":"暂时还没有标签。","links.label":"友链","links.title":"友情链接","links.empty_data":"暂未加载到友链数据。请确认 source/_data/links.yml 存在并已 hexo clean。","links.rss_label":"%s 的 RSS","friends_feed.label":"朋友圈","friends_feed.title":"友链朋友圈","friends_feed.loading":"正在加载友链动态…","friends_feed.missing_url":"暂未配置 all.json 地址。","friends_feed.load_failed":"友链动态加载失败，请稍后再试。","friends_feed.empty":"暂时没有抓取到友链文章。","friends_feed.load_more":"加载更多","friends_feed.updated_at":"更新于 %s","friends_feed.friend_count":"%d 位友邻","friends_feed.active_count":"%d 位活跃","friends_feed.article_count":"%d 篇文章","friends_feed.unknown_author":"未知站点","friends_feed.date_unknown":"时间未知","guestbook.label":"留言板","guestbook.title":"留言板","guestbook.loading":"正在铺开留言墙…","guestbook.missing_config":"留言墙需要评论系统：请在主题配置中设置 comments: twikoo（并填写 envId）或 comments: artalk（并填写 server）。","guestbook.load_failed":"留言加载失败，请稍后再试。","guestbook.empty":"墙上还空着，来贴第一张留言吧！","guestbook.load_more":"展开更多留言","guestbook.total_count":"共 %d 条留言","guestbook.latest_note":"墙上展示最新 %d 条","guestbook.jump_to_comment":"查看留言","guestbook.sort_time":"查看最新","guestbook.sort_random":"随机排序","guestbook.anonymous":"匿名访客","guestbook.write_hint":"在下方留言，刷新后就会贴到墙上","post.scroll_to_comments":"跳转到评论区","post.previous":"上一篇","post.next":"下一篇","post.no_previous":"没有更早的文章了","post.no_next":"已经是最新的一篇","post.back_to_top":"返回顶部","post.related_posts":"相关文章","post.view_more":"查看更多","not_found.label":"页面走丢了","not_found.title":"找不到这个页面","not_found.text":"这个地址可能已经移动、删除，或者从未存在。","not_found.home":"返回首页","not_found.search":"搜索文章","search.placeholder":"输入关键词，按 Esc 关闭","search.empty":"输入关键词后显示匹配的文章","search.loading":"正在加载搜索索引…","search.load_failed":"搜索索引加载失败，请重新打开搜索重试","search.no_result":"没有找到与 \"%s\" 相关的文章","search.close":"关闭搜索","code.copy":"复制代码","code.collapse":"折叠代码","code.expand":"展开代码","heading.anchor":"链接到此节: %s","head.tag":"标签：%s","head.category":"分类：%s","head.archive":"归档","head.archive_with_date":"归档：%s","head.page_number":"第 %d 页","navigation.primary":"主导航","navigation.mobile":"移动端导航","navigation.brand_home":"FlatPaper 首页","navigation.brand_menu":"打开站点导航","navigation.open_sidebar":"打开侧边栏","navigation.close_sidebar":"关闭侧边栏","navigation.sidebar":"侧边栏","navigation.sidebar_tools":"侧边栏工具","navigation.site_links":"站点链接","navigation.site_info":"站点信息","colors.choose_theme_color":"选择主题色","colors.theme_color":"主题色","colors.toggle_color_mode":"切换颜色模式","colors.green":"绿色","colors.purple":"紫色","colors.pink":"粉色","colors.sakura":"樱花粉","colors.blue":"蓝色","colors.orange":"橙色","colors.black":"黑色","profile.default_bio":"热爱生活，热爱代码，喜欢分享技术与生活中的点滴。","welcome.cta":"开始阅读","welcome.title":"欢迎来到 FlatPaper","welcome.text":"一个专注于内容与阅读体验的博客主题。","home_hero.label":"首页开屏","home_hero.enter":"开始阅读","home_hero.note":"今日","home_hero.default_subtitle":"日常记录","home_hero.nav_links":"开屏导航","home_hero.profile_links":"个人链接","home_hero.tools":"开屏工具","home_hero.shuffle_stickers":"打乱贴纸位置","home_hero.link":"链接","home_hero.sticker_image":"贴纸图片","home_hero.visit_confirm":"要访问 %s 吗？","home_hero.visit":"访问","home_hero.cancel":"取消","toc.title":"文章目录","toc.empty":"目录会根据文章标题自动生成。","toc.expand_all":"展开全部目录","toc.collapse_all":"收起全部目录","sidebar.hot_tags":"热门标签","sidebar.latest_posts":"最新文章"};
+  window.FLATPAPER_I18N = {"language":"zh-CN","common.posts":"文章","common.categories":"分类","common.tags":"标签","common.comments":"评论","common.share":"分享","common.page":"页面","common.archive":"归档","common.post_list":"文章列表","common.search_posts":"搜索文章","common.random_posts":"随机文章","common.reward":"赞赏","common.view_all":"查看全部","pagination.prev":"上一页","pagination.next":"下一页","pagination.post_pager":"文章分页","pagination.archive_pager":"归档分页","index.featured":"精选文章","index.pinned":"置顶","index.read_more":"阅读全文","index.previous_slide":"上一张","index.next_slide":"下一张","index.carousel_pagination":"轮播页码","index.carousel_slide":"第 %d 张","index.latest_posts":"最新文章","index.empty_posts":"还没有文章。创建第一篇文章后，这里会显示最新内容。","archive.title":"归档","archive.post_list":"文章列表","taxonomy.category_count":"%d 篇","taxonomy.empty_categories":"暂时还没有分类。","taxonomy.empty_tags":"暂时还没有标签。","links.label":"友链","links.title":"友情链接","links.empty_data":"暂未加载到友链数据。请确认 source/_data/links.yml 存在并已 hexo clean。","links.rss_label":"%s 的 RSS","friends_feed.label":"朋友圈","friends_feed.title":"友链朋友圈","friends_feed.loading":"正在加载友链动态…","friends_feed.missing_url":"暂未配置 all.json 地址。","friends_feed.load_failed":"友链动态加载失败，请稍后再试。","friends_feed.empty":"暂时没有抓取到友链文章。","friends_feed.load_more":"加载更多","friends_feed.updated_at":"更新于 %s","friends_feed.friend_count":"%d 位友邻","friends_feed.active_count":"%d 位活跃","friends_feed.article_count":"%d 篇文章","friends_feed.unknown_author":"未知站点","friends_feed.date_unknown":"时间未知","guestbook.label":"留言板","guestbook.title":"留言板","guestbook.loading":"正在铺开留言墙…","guestbook.missing_config":"留言墙需要评论系统：请在主题配置中设置 comments: twikoo（并填写 envId）或 comments: artalk（并填写 server）。","guestbook.load_failed":"留言加载失败，请稍后再试。","guestbook.empty":"墙上还空着，来贴第一张留言吧！","guestbook.load_more":"展开更多留言","guestbook.total_count":"共 %d 条留言","guestbook.latest_note":"墙上展示最新 %d 条","guestbook.jump_to_comment":"查看留言","guestbook.sort_time":"查看最新","guestbook.sort_random":"随机排序","guestbook.anonymous":"匿名访客","guestbook.write_hint":"在下方留言，刷新后就会贴到墙上","post.scroll_to_comments":"跳转到评论区","post.previous":"上一篇","post.next":"下一篇","post.no_previous":"没有更早的文章了","post.no_next":"已经是最新的一篇","post.back_to_top":"返回顶部","post.related_posts":"相关文章","post.view_more":"查看更多","not_found.label":"页面走丢了","not_found.title":"找不到这个页面","not_found.text":"这个地址可能已经移动、删除，或者从未存在。","not_found.home":"返回首页","not_found.search":"搜索文章","search.placeholder":"输入关键词，按 Esc 关闭","search.empty":"输入关键词后显示匹配的文章","search.loading":"正在加载搜索索引…","search.load_failed":"搜索索引加载失败，请重新打开搜索重试","search.no_result":"没有找到与 \"%s\" 相关的文章","search.close":"关闭搜索","code.copy":"复制代码","code.collapse":"折叠代码","code.expand":"展开代码","heading.anchor":"链接到此节: %s","head.tag":"标签：%s","head.category":"分类：%s","head.archive":"归档","head.archive_with_date":"归档：%s","head.page_number":"第 %d 页","navigation.primary":"主导航","navigation.mobile":"移动端导航","navigation.brand_home":"FlatPaper 首页","navigation.brand_menu":"打开站点导航","navigation.open_sidebar":"打开侧边栏","navigation.close_sidebar":"关闭侧边栏","navigation.sidebar":"侧边栏","navigation.sidebar_tools":"侧边栏工具","navigation.site_links":"站点链接","navigation.site_info":"站点信息","colors.choose_theme_color":"选择主题色","colors.theme_color":"主题色","colors.toggle_color_mode":"切换颜色模式","colors.green":"绿色","colors.purple":"紫色","colors.pink":"粉色","colors.sakura":"樱花粉","colors.blue":"蓝色","colors.orange":"橙色","colors.black":"黑色","profile.default_bio":"热爱生活，热爱代码，喜欢分享技术与生活中的点滴。","welcome.cta":"开始阅读","welcome.title":"欢迎来到 FlatPaper","welcome.text":"一个专注于内容与阅读体验的博客主题。","typed.from":"出自","stack_album.label":"堆叠相册","home_hero.label":"首页开屏","home_hero.enter":"开始阅读","home_hero.note":"今日","home_hero.default_subtitle":"日常记录","home_hero.nav_links":"开屏导航","home_hero.profile_links":"个人链接","home_hero.tools":"开屏工具","home_hero.shuffle_stickers":"打乱贴纸位置","home_hero.link":"链接","home_hero.sticker_image":"贴纸图片","home_hero.visit_confirm":"要访问 %s 吗？","home_hero.visit":"访问","home_hero.cancel":"取消","toc.title":"文章目录","toc.empty":"目录会根据文章标题自动生成。","toc.expand_all":"展开全部目录","toc.collapse_all":"收起全部目录","sidebar.hot_tags":"热门标签","sidebar.latest_posts":"最新文章"};
   </script>
   
 <script src="/js/main.js"></script>
 
   
-<!-- hexo injector body_end start --><script>
-(function(){
-  // 主题会把文章图片包进 <a data-fancybox> 用于点击放大;
-  // 堆叠区点击要用于翻牌,解除 fancybox 与链接跳转
-  function unfancy(card){
-    var a=card.querySelector('a');
-    if(!a)return;
-    a.removeAttribute('data-fancybox');
-    a.removeAttribute('data-fancybox-group');
-    a.addEventListener('click',function(e){e.preventDefault();});
-  }
-  // 方向:用户填了 data-orient 用之;没填按图片实际比例
-  function applyOrient(card,img,base){
-    var o=card.getAttribute('data-orient');
-    if(!o)o=(img.naturalWidth||0)>(img.naturalHeight||0)?'h':'v';
-    card.classList.toggle(base+'--h',o==='h');
-    card.classList.toggle(base+'--v',o==='v');
-  }
-  function init(stack,cardSel){
-    var cards=[].slice.call(stack.querySelectorAll(cardSel));
-    if(cards.length<2)return;
-    stack.classList.add('is-stacked');
-    var n=cards.length;
-    var base=cardSel.slice(1);
-    var animating=false;
-    var scale=1;
-    var baseHeight=parseFloat(getComputedStyle(stack).getPropertyValue('--fp-stack-h'))||480;
-    for(var k=0;k<n;k++){
-      unfancy(cards[k]);
-      (function(c){
-        var img=c.querySelector('img');
-        if(img.complete)applyOrient(c,img,base);
-        else img.addEventListener('load',function(){applyOrient(c,img,base);layout();});
-      })(cards[k]);
-    }
-    function cardSize(c){
-      return c.classList.contains(base+'--h')?{width:480,height:320}:{width:320,height:480};
-    }
-    function updateScale(){
-      var maxVisualWidth=0;
-      for(var i=0;i<n;i++){
-        var size=cardSize(cards[i]);
-        var angle=Math.min(i*1.6,6)*Math.PI/180;
-        var visualWidth=Math.abs(size.width*Math.cos(angle))+Math.abs(size.height*Math.sin(angle));
-        maxVisualWidth=Math.max(maxVisualWidth,visualWidth);
-      }
-      var available=stack.clientWidth;
-      var isMobile=window.matchMedia?window.matchMedia('(max-width:480px)').matches:window.innerWidth<=480;
-      scale=isMobile&&available>0?Math.min(1,available/maxVisualWidth):1;
-      stack.style.height=(baseHeight*scale)+'px';
-    }
-    function layout(){
-      updateScale();
-      for(var i=0;i<n;i++){
-        var c=cards[i];
-        var off=i*10*scale;
-        var rot=(i%2===0?1:-1)*Math.min(i*1.6,6);
-        c.style.transform='translate(-50%,-50%) translateY('+off+'px) rotate('+rot+'deg) scale('+scale+')';
-        c.style.zIndex=String(n-i);
-        c.classList.toggle('is-top',i===0);
-      }
-    }
-    function next(){
-      if(animating)return;
-      animating=true;
-      var top=cards[0];
-      top.classList.add('is-taking');
-      var takingScale=scale*1.05;
-      var isMobile=window.matchMedia?window.matchMedia('(max-width:480px)').matches:window.innerWidth<=480;
-      if(isMobile)takingScale=Math.min(takingScale,stack.clientWidth/cardSize(top).width);
-      top.style.transform='translate(-50%,-50%) translateY('+(-46*scale)+'px) rotate(0deg) scale('+takingScale+')';
-      var timer;
-      var done=function(e){
-        if(e&&e.propertyName!=='transform')return;
-        top.removeEventListener('transitionend',done);
-        clearTimeout(timer);
-        top.classList.remove('is-taking');
-        cards.push(cards.shift());
-        layout();
-        animating=false;
-      };
-      top.addEventListener('transitionend',done);
-      timer=setTimeout(done,700); // 兜底:防 transitionend 丢失
-    }
-    stack.addEventListener('click',function(e){
-      var card=e.target&&e.target.closest?e.target.closest(cardSel):null;
-      if(!card||card!==cards[0])return;
-      if(!card.classList.contains('is-taking'))next();
-    });
-    window.addEventListener('resize',function(){if(!animating)layout();});
-    layout();
-  }
-  function initNav(nav){
-    var deck=nav.querySelector('.fp-stacknav__deck');
-    if(!deck)return;
-    var cards=[].slice.call(deck.querySelectorAll('.fp-stacknav__card'));
-    if(cards.length<2)return;
-    var items=[].slice.call(nav.querySelectorAll('.fp-stacknav__list [data-idx]'));
-    if(items.length!==cards.length)return;
-    for(var k=0;k<cards.length;k++)unfancy(cards[k]);
-    deck.classList.add('is-stacked');
-    var n=cards.length;
-    var order=cards.slice();
-    var baseHeight=parseFloat(getComputedStyle(deck).getPropertyValue('--fp-stack-h'))||160;
-    function isMobile(){
-      return window.matchMedia?window.matchMedia('(max-width:480px)').matches:window.innerWidth<=480;
-    }
-    function layout(){
-      var mobile=isMobile();
-      deck.style.height=mobile?baseHeight+'px':'';
-      for(var i=0;i<n;i++){
-        var c=cards[i];
-        var off=i*6;
-        var rot=(i%2===0?1:-1)*Math.min(i*1.2,4);
-        c.style.transform='translate(-50%,-50%) translateY('+off+'px) rotate('+rot+'deg)';
-        c.style.zIndex=String(n-i);
-        c.classList.toggle('is-top',i===0);
-      }
-      if(!mobile)return;
-      var maxRadius=baseHeight/2;
-      for(var j=0;j<n;j++){
-        var card=cards[j];
-        var cardWidth=card.classList.contains('fp-stacknav__card--h')?160:120;
-        var cardHeight=card.classList.contains('fp-stacknav__card--h')?107:160;
-        var angle=Math.min(j*1.2,4)*Math.PI/180;
-        var halfHeight=(Math.abs(cardHeight*Math.cos(angle))+Math.abs(cardWidth*Math.sin(angle)))/2;
-        var offset=j*6;
-        maxRadius=Math.max(maxRadius,offset+halfHeight,halfHeight-offset);
-      }
-      deck.style.height=(maxRadius*2)+'px';
-    }
-    items.forEach(function(a){
-      var idx=parseInt(a.getAttribute('data-idx'),10);
-      if(isNaN(idx))return;
-      a.addEventListener('mouseenter',function(){
-        if(cards[0]===cards[idx])return;
-        var card=cards.splice(idx,1)[0];
-        cards.unshift(card);
-        layout();
-      });
-      a.addEventListener('mouseleave',function(){
-        cards.length=0;
-        for(var j=0;j<order.length;j++)cards.push(order[j]);
-        layout();
-      });
-    });
-    window.addEventListener('resize',layout);
-    layout();
-  }
-  function bindImgRetry(){
-    // 兜底:图片加载失败(如 CDN 边缘缓存了旧 403/浏览器缓存)时,
-    // 以 no-referrer 重试一次,自愈防盗链类问题
-    var imgs=document.querySelectorAll('.fp-img');
-    for(var i=0;i<imgs.length;i++){
-      var img=imgs[i];
-      if(img.getAttribute('data-retried'))continue;
-      img.setAttribute('data-retried','1');
-      img.addEventListener('error',function(){
-        if(this.getAttribute('data-retry'))return;
-        this.setAttribute('data-retry','1');
-        this.setAttribute('referrerpolicy','no-referrer');
-        var src=this.getAttribute('src');
-        this.setAttribute('src','');
-        this.setAttribute('src',src);
-      });
-    }
-  }
-  function fixHotlink(){
-    // B 站图床(i0.hdslb.com)防盗链:拒绝带 Referer 的请求,重试需 no-referrer
-    var imgs=document.querySelectorAll('img[src*="hdslb.com"],img[src*="hdslb.net"]');
-    for(var i=0;i<imgs.length;i++){
-      var img=imgs[i];
-      if(img.getAttribute('referrerpolicy')==='no-referrer')continue;
-      img.setAttribute('referrerpolicy','no-referrer');
-      var src=img.getAttribute('src');
-      if(img.complete&&img.naturalWidth===0&&src){
-        img.setAttribute('src','');
-        img.setAttribute('src',src);
-      }
-    }
-  }
-  function boot(){
-    var s=document.querySelectorAll('.fp-stack');
-    for(var i=0;i<s.length;i++)init(s[i],'.fp-stack__card');
-    var ns=document.querySelectorAll('.fp-stacknav');
-    for(var j=0;j<ns.length;j++)initNav(ns[j]);
-    bindImgRetry();
-    fixHotlink();
-  }
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',boot);}
-  else{boot();}
-})();
-</script><!-- hexo injector body_end end --></body>
+  <script src="/js/welcome.js" defer></script>
+  
+</body>
 </html>
